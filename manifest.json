@@ -1,7 +1,7 @@
 {
   "name": "AveSampler — Registro de Muestreo de Aves",
   "short_name": "AveSampler",
-  "description": "Sistema de recolección de datos biológicos en campo para muestreo de aves con generación automática de reportes.",
+  "description": "Sistema de recolección de datos de avifauna con reportes PDF y LaTeX.",
   "start_url": "/Forms.github.io/",
   "scope": "/Forms.github.io/",
   "display": "standalone",
@@ -9,65 +9,17 @@
   "background_color": "#1c3d2c",
   "theme_color": "#1c3d2c",
   "lang": "es",
-  "dir": "ltr",
-  "categories": ["science", "productivity", "utilities"],
   "icons": [
-    {
-      "src": "icons/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    { "src": "icons/icon-72.png",  "sizes": "72x72",   "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-96.png",  "sizes": "96x96",   "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-144.png", "sizes": "144x144", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "shortcuts": [
-    {
-      "name": "Nuevo registro",
-      "short_name": "Nuevo",
-      "url": "/Forms.github.io/",
-      "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]
-    }
+    { "name": "Nuevo registro", "url": "/Forms.github.io/", "icons": [{"src":"icons/icon-96.png","sizes":"96x96"}] }
   ],
   "prefer_related_applications": false
 }

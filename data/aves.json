@@ -1,0 +1,185 @@
+{
+  "version":"1.0","region":"Colombia / Neotropical",
+  "familias":[
+    {"id":"accipitridae","familia":"Accipitridae","nombre_comun":"Águilas y gavilanes","orden":"Accipitriformes","especies":[
+      {"nombre_cientifico":"Harpia harpyja","nombre_comun":"Águila harpía"},
+      {"nombre_cientifico":"Geranoaetus melanoleucus","nombre_comun":"Águila pechinegra"},
+      {"nombre_cientifico":"Buteo platypterus","nombre_comun":"Gavilán aludo"},
+      {"nombre_cientifico":"Buteo swainsoni","nombre_comun":"Gavilán de Swainson"},
+      {"nombre_cientifico":"Rupornis magnirostris","nombre_comun":"Gavilán caminero"},
+      {"nombre_cientifico":"Accipiter striatus","nombre_comun":"Gavilán pechirrufo"},
+      {"nombre_cientifico":"Busarellus nigricollis","nombre_comun":"Gavilán de ciénaga"},
+      {"nombre_cientifico":"Pandion haliaetus","nombre_comun":"Águila pescadora"}
+    ]},
+    {"id":"anatidae","familia":"Anatidae","nombre_comun":"Patos y gansos","orden":"Anseriformes","especies":[
+      {"nombre_cientifico":"Dendrocygna viduata","nombre_comun":"Pisingo cariblanco"},
+      {"nombre_cientifico":"Dendrocygna autumnalis","nombre_comun":"Pisingo carirrojo"},
+      {"nombre_cientifico":"Anas discors","nombre_comun":"Pato barraquete"},
+      {"nombre_cientifico":"Cairina moschata","nombre_comun":"Pato real"},
+      {"nombre_cientifico":"Amazonetta brasiliensis","nombre_comun":"Pato brasilero"},
+      {"nombre_cientifico":"Spatula clypeata","nombre_comun":"Pato cucharo"}
+    ]},
+    {"id":"ardeidae","familia":"Ardeidae","nombre_comun":"Garzas","orden":"Pelecaniformes","especies":[
+      {"nombre_cientifico":"Ardea alba","nombre_comun":"Garza real"},
+      {"nombre_cientifico":"Ardea herodias","nombre_comun":"Garza morena"},
+      {"nombre_cientifico":"Egretta thula","nombre_comun":"Garceta nívea"},
+      {"nombre_cientifico":"Egretta caerulea","nombre_comun":"Garceta azul"},
+      {"nombre_cientifico":"Butorides striata","nombre_comun":"Garceta estriada"},
+      {"nombre_cientifico":"Bubulcus ibis","nombre_comun":"Garceta bueyera"},
+      {"nombre_cientifico":"Nycticorax nycticorax","nombre_comun":"Garza noche coroninegra"},
+      {"nombre_cientifico":"Tigrisoma lineatum","nombre_comun":"Garza tigre barreteada"}
+    ]},
+    {"id":"cathartidae","familia":"Cathartidae","nombre_comun":"Buitres y gallinazos","orden":"Cathartiformes","especies":[
+      {"nombre_cientifico":"Coragyps atratus","nombre_comun":"Gallinazo negro"},
+      {"nombre_cientifico":"Cathartes aura","nombre_comun":"Gallinazo cabecirojo"},
+      {"nombre_cientifico":"Cathartes burrovianus","nombre_comun":"Gallinazo cabeciamarillo"},
+      {"nombre_cientifico":"Sarcoramphus papa","nombre_comun":"Gallinazo rey"}
+    ]},
+    {"id":"columbidae","familia":"Columbidae","nombre_comun":"Palomas y tórtolas","orden":"Columbiformes","especies":[
+      {"nombre_cientifico":"Columba livia","nombre_comun":"Paloma doméstica"},
+      {"nombre_cientifico":"Patagioenas cayennensis","nombre_comun":"Paloma colorada"},
+      {"nombre_cientifico":"Patagioenas fasciata","nombre_comun":"Paloma collareja"},
+      {"nombre_cientifico":"Zenaida auriculata","nombre_comun":"Tórtola orejuda"},
+      {"nombre_cientifico":"Columbina talpacoti","nombre_comun":"Tortolita rojiza"},
+      {"nombre_cientifico":"Leptotila verreauxi","nombre_comun":"Paloma coliblancha"},
+      {"nombre_cientifico":"Geotrygon montana","nombre_comun":"Paloma perdiz rojiza"}
+    ]},
+    {"id":"falconidae","familia":"Falconidae","nombre_comun":"Halcones y cernícalos","orden":"Falconiformes","especies":[
+      {"nombre_cientifico":"Falco sparverius","nombre_comun":"Cernícalo americano"},
+      {"nombre_cientifico":"Falco columbarius","nombre_comun":"Esmerejón"},
+      {"nombre_cientifico":"Falco peregrinus","nombre_comun":"Halcón peregrino"},
+      {"nombre_cientifico":"Falco rufigularis","nombre_comun":"Halcón murciélaguero"},
+      {"nombre_cientifico":"Caracara cheriway","nombre_comun":"Caracara moñudo"},
+      {"nombre_cientifico":"Herpetotheres cachinnans","nombre_comun":"Halcón reidor"}
+    ]},
+    {"id":"furnariidae","familia":"Furnariidae","nombre_comun":"Hojarascas y pijuíes","orden":"Passeriformes","especies":[
+      {"nombre_cientifico":"Synallaxis azarae","nombre_comun":"Pijuí de Azara"},
+      {"nombre_cientifico":"Synallaxis albescens","nombre_comun":"Pijuí pálido"},
+      {"nombre_cientifico":"Asthenes flammulata","nombre_comun":"Canastero flameado"},
+      {"nombre_cientifico":"Cinclodes excelsior","nombre_comun":"Cinclodes piquigrueso"},
+      {"nombre_cientifico":"Xenops minutus","nombre_comun":"Picolezna menor"}
+    ]},
+    {"id":"hirundinidae","familia":"Hirundinidae","nombre_comun":"Golondrinas","orden":"Passeriformes","especies":[
+      {"nombre_cientifico":"Progne tapera","nombre_comun":"Martín pechipardo"},
+      {"nombre_cientifico":"Progne chalybea","nombre_comun":"Martín pechigris"},
+      {"nombre_cientifico":"Pygochelidon cyanoleuca","nombre_comun":"Golondrina blanquiazul"},
+      {"nombre_cientifico":"Stelgidopteryx ruficollis","nombre_comun":"Golondrina alirrasposa"},
+      {"nombre_cientifico":"Riparia riparia","nombre_comun":"Golondrina ribereña"},
+      {"nombre_cientifico":"Hirundo rustica","nombre_comun":"Golondrina tijereta"}
+    ]},
+    {"id":"icteridae","familia":"Icteridae","nombre_comun":"Turpiales, tordos y oropéndolas","orden":"Passeriformes","especies":[
+      {"nombre_cientifico":"Icterus nigrogularis","nombre_comun":"Turpial amarillo"},
+      {"nombre_cientifico":"Icterus chrysater","nombre_comun":"Turpial apagado"},
+      {"nombre_cientifico":"Molothrus bonariensis","nombre_comun":"Chamón común"},
+      {"nombre_cientifico":"Quiscalus lugubris","nombre_comun":"Clarinero caribeño"},
+      {"nombre_cientifico":"Psarocolius decumanus","nombre_comun":"Oropéndola crestada"},
+      {"nombre_cientifico":"Psarocolius angustifrons","nombre_comun":"Oropéndola dorsirojiza"},
+      {"nombre_cientifico":"Sturnella magna","nombre_comun":"Toche pechiamarillo"}
+    ]},
+    {"id":"momotidae","familia":"Momotidae","nombre_comun":"Momotos","orden":"Coraciiformes","especies":[
+      {"nombre_cientifico":"Momotus aequatorialis","nombre_comun":"Momoto andino"},
+      {"nombre_cientifico":"Momotus momota","nombre_comun":"Momoto coliazul"},
+      {"nombre_cientifico":"Baryphthengus martii","nombre_comun":"Momoto canelo"},
+      {"nombre_cientifico":"Electron platyrhynchum","nombre_comun":"Momoto piquiancho"}
+    ]},
+    {"id":"parulidae","familia":"Parulidae","nombre_comun":"Reinitas","orden":"Passeriformes","especies":[
+      {"nombre_cientifico":"Setophaga petechia","nombre_comun":"Reinita amarilla"},
+      {"nombre_cientifico":"Setophaga striata","nombre_comun":"Reinita estriada"},
+      {"nombre_cientifico":"Setophaga ruticilla","nombre_comun":"Candelita norteña"},
+      {"nombre_cientifico":"Mniotilta varia","nombre_comun":"Reinita trepadora"},
+      {"nombre_cientifico":"Geothlypis philadelphia","nombre_comun":"Mascarita de Filadelfia"},
+      {"nombre_cientifico":"Myiothlypis fulvicauda","nombre_comun":"Reinita flanquirrojiza"}
+    ]},
+    {"id":"picidae","familia":"Picidae","nombre_comun":"Pájaros carpinteros","orden":"Piciformes","especies":[
+      {"nombre_cientifico":"Colaptes punctigula","nombre_comun":"Carpintero punteado"},
+      {"nombre_cientifico":"Melanerpes rubricapillus","nombre_comun":"Carpintero habado"},
+      {"nombre_cientifico":"Veniliornis kirkii","nombre_comun":"Carpintero piquirrojo"},
+      {"nombre_cientifico":"Piculus flavigula","nombre_comun":"Carpintero gorgiamarillo"},
+      {"nombre_cientifico":"Dryocopus lineatus","nombre_comun":"Carpintero lineado"},
+      {"nombre_cientifico":"Campephilus melanoleucos","nombre_comun":"Carpintero marcial"}
+    ]},
+    {"id":"psittacidae","familia":"Psittacidae","nombre_comun":"Loros, guacamayas y periquitos","orden":"Psittaciformes","especies":[
+      {"nombre_cientifico":"Ara macao","nombre_comun":"Guacamaya bandera"},
+      {"nombre_cientifico":"Ara chloropterus","nombre_comun":"Guacamaya verde"},
+      {"nombre_cientifico":"Ara ararauna","nombre_comun":"Guacamaya azuliamarilla"},
+      {"nombre_cientifico":"Amazona amazonica","nombre_comun":"Lora aliamarilla"},
+      {"nombre_cientifico":"Amazona farinosa","nombre_comun":"Lora real"},
+      {"nombre_cientifico":"Pionus menstruus","nombre_comun":"Loro cabeciazul"},
+      {"nombre_cientifico":"Forpus conspicillatus","nombre_comun":"Periquito de anteojos"},
+      {"nombre_cientifico":"Brotogeris jugularis","nombre_comun":"Perico bronceado"}
+    ]},
+    {"id":"ramphastidae","familia":"Ramphastidae","nombre_comun":"Tucanes y tucanetes","orden":"Piciformes","especies":[
+      {"nombre_cientifico":"Ramphastos toco","nombre_comun":"Tucán toco"},
+      {"nombre_cientifico":"Ramphastos swainsonii","nombre_comun":"Tucán de Swainson"},
+      {"nombre_cientifico":"Ramphastos vitellinus","nombre_comun":"Tucán pechivino"},
+      {"nombre_cientifico":"Aulacorhynchus prasinus","nombre_comun":"Tucanete esmeralda"},
+      {"nombre_cientifico":"Pteroglossus torquatus","nombre_comun":"Arasarí collarejo"},
+      {"nombre_cientifico":"Selenidera spectabilis","nombre_comun":"Tucanete puntiamarillo"}
+    ]},
+    {"id":"thraupidae","familia":"Thraupidae","nombre_comun":"Tangaras y azulejos","orden":"Passeriformes","especies":[
+      {"nombre_cientifico":"Thraupis episcopus","nombre_comun":"Azulejo de jardín"},
+      {"nombre_cientifico":"Thraupis palmarum","nombre_comun":"Azulejo palmero"},
+      {"nombre_cientifico":"Tangara gyrola","nombre_comun":"Tangara cabecibaya"},
+      {"nombre_cientifico":"Tangara cyanicollis","nombre_comun":"Tangara cabeciazul"},
+      {"nombre_cientifico":"Tangara nigroviridis","nombre_comun":"Tangara lentejuelada"},
+      {"nombre_cientifico":"Ramphocelus dimidiatus","nombre_comun":"Sangre de toro occidental"},
+      {"nombre_cientifico":"Ramphocelus flammigerus","nombre_comun":"Toche en llamas"},
+      {"nombre_cientifico":"Chlorophanes spiza","nombre_comun":"Mielero verde"},
+      {"nombre_cientifico":"Dacnis cayana","nombre_comun":"Dacnis azul"},
+      {"nombre_cientifico":"Piranga rubra","nombre_comun":"Piranga roja"}
+    ]},
+    {"id":"threskiornithidae","familia":"Threskiornithidae","nombre_comun":"Ibis y espátulas","orden":"Pelecaniformes","especies":[
+      {"nombre_cientifico":"Eudocimus ruber","nombre_comun":"Corocoro colorado"},
+      {"nombre_cientifico":"Eudocimus albus","nombre_comun":"Ibis blanco"},
+      {"nombre_cientifico":"Mesembrinibis cayennensis","nombre_comun":"Ibis pico de palo"},
+      {"nombre_cientifico":"Phimosus infuscatus","nombre_comun":"Coquito oscuro"},
+      {"nombre_cientifico":"Platalea ajaja","nombre_comun":"Espátula rosada"}
+    ]},
+    {"id":"trochilidae","familia":"Trochilidae","nombre_comun":"Colibríes","orden":"Apodiformes","especies":[
+      {"nombre_cientifico":"Florisuga mellivora","nombre_comun":"Jacobino nuquiblanco"},
+      {"nombre_cientifico":"Colibri thalassinus","nombre_comun":"Colibrí orejivioláceo verde"},
+      {"nombre_cientifico":"Heliodoxa jacula","nombre_comun":"Colibrí pechiverde brillante"},
+      {"nombre_cientifico":"Coeligena torquata","nombre_comun":"Colibrí collarejo"},
+      {"nombre_cientifico":"Lesbia nuna","nombre_comun":"Colibrí colilargo verde"},
+      {"nombre_cientifico":"Aglaiocercus kingii","nombre_comun":"Silfo coliverde"},
+      {"nombre_cientifico":"Ensifera ensifera","nombre_comun":"Colibrí pico de espada"},
+      {"nombre_cientifico":"Chaetocercus mulsant","nombre_comun":"Colibrí gorgiblanco"},
+      {"nombre_cientifico":"Amazilia tzacatl","nombre_comun":"Amazilia colirrufa"},
+      {"nombre_cientifico":"Chlorestes notata","nombre_comun":"Esmeralda coliazul"}
+    ]},
+    {"id":"trogonidae","familia":"Trogonidae","nombre_comun":"Trogones y quetzales","orden":"Trogoniformes","especies":[
+      {"nombre_cientifico":"Pharomachrus mocinno","nombre_comun":"Quetzal mesoamericano"},
+      {"nombre_cientifico":"Pharomachrus auriceps","nombre_comun":"Quetzal cabecioro"},
+      {"nombre_cientifico":"Trogon violaceus","nombre_comun":"Trogón violáceo"},
+      {"nombre_cientifico":"Trogon personatus","nombre_comun":"Trogón enmascarado"},
+      {"nombre_cientifico":"Trogon collaris","nombre_comun":"Trogón collarejo"},
+      {"nombre_cientifico":"Trogon rufus","nombre_comun":"Trogón negro"}
+    ]},
+    {"id":"troglodytidae","familia":"Troglodytidae","nombre_comun":"Cucaracheros","orden":"Passeriformes","especies":[
+      {"nombre_cientifico":"Troglodytes aedon","nombre_comun":"Cucarachero común"},
+      {"nombre_cientifico":"Campylorhynchus griseus","nombre_comun":"Cucarachero descrestado"},
+      {"nombre_cientifico":"Thryophilus nigricapillus","nombre_comun":"Cucarachero pechirrufo"},
+      {"nombre_cientifico":"Cantorchilus leucotis","nombre_comun":"Cucarachero capiblanco"},
+      {"nombre_cientifico":"Cinnycerthia unirufa","nombre_comun":"Cucarachero rufo"}
+    ]},
+    {"id":"turdidae","familia":"Turdidae","nombre_comun":"Mirlas y zorzales","orden":"Passeriformes","especies":[
+      {"nombre_cientifico":"Turdus fuscater","nombre_comun":"Mirla patiamarilla"},
+      {"nombre_cientifico":"Turdus ignobilis","nombre_comun":"Mirla común"},
+      {"nombre_cientifico":"Turdus leucomelas","nombre_comun":"Mirla ventripálida"},
+      {"nombre_cientifico":"Turdus serranus","nombre_comun":"Mirla serrana"},
+      {"nombre_cientifico":"Catharus minimus","nombre_comun":"Zorzal caricafé"},
+      {"nombre_cientifico":"Catharus ustulatus","nombre_comun":"Zorzal de Swainson"}
+    ]},
+    {"id":"tyrannidae","familia":"Tyrannidae","nombre_comun":"Atrapamoscas y tiranídeos","orden":"Passeriformes","especies":[
+      {"nombre_cientifico":"Tyrannus melancholicus","nombre_comun":"Sirirí tropical"},
+      {"nombre_cientifico":"Tyrannus tyrannus","nombre_comun":"Sirirí norteño"},
+      {"nombre_cientifico":"Pitangus sulphuratus","nombre_comun":"Bichofué gritón"},
+      {"nombre_cientifico":"Myiozetetes similis","nombre_comun":"Pintasilvestre social"},
+      {"nombre_cientifico":"Myiodynastes maculatus","nombre_comun":"Atrapamoscas rayado"},
+      {"nombre_cientifico":"Elaenia flavogaster","nombre_comun":"Elaenia ventriamarilla"},
+      {"nombre_cientifico":"Pyrocephalus rubinus","nombre_comun":"Mosquero cardenal"},
+      {"nombre_cientifico":"Fluvicola pica","nombre_comun":"Viudita pía"},
+      {"nombre_cientifico":"Machetornis rixosa","nombre_comun":"Pitajo montaraz"}
+    ]}
+  ]
+}

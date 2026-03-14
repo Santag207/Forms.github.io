@@ -1,537 +1,392 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-  <!-- PWA / Android -->
-  <meta name="theme-color" content="#1c3d2c" />
-  <link rel="manifest" href="manifest.json" />
-
-  <!-- iOS Safari PWA — OBLIGATORIO para instalar en iPhone/iPad -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="AveSampler" />
-  <link rel="apple-touch-icon" href="icons/icon-152.png" />
-  <link rel="apple-touch-icon" sizes="72x72"   href="icons/icon-72.png" />
-  <link rel="apple-touch-icon" sizes="96x96"   href="icons/icon-96.png" />
-  <link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png" />
-  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png" />
-
-  <!-- General -->
-  <meta name="description" content="Sistema de Registro de Muestreo de Aves — Recolección de datos biológicos en campo con generación automática de reportes." />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
-
-  <title>AveSampler — Registro de Muestreo de Aves</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta name="theme-color" content="#1c3d2c"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="AveSampler"/>
+  <link rel="apple-touch-icon" href="icons/icon-192.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png"/>
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png"/>
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <link rel="icon" type="image/png" href="icons/icon-192.png"/>
+  <title>AveSampler</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <!-- ░░ SCREEN: HOME ░░ -->
-  <div id="screen-home" class="screen active">
-    <div class="home-bg-layer"></div>
-    <header class="home-header">
-      <div class="logo-mark">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 34C12 26 20 18 32 14C28 20 24 30 24 38" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M24 38C26 32 30 22 40 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-          <circle cx="24" cy="38" r="3" fill="currentColor" opacity="0.6"/>
-          <path d="M6 40C10 36 16 36 24 38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-        </svg>
+<!-- ╔══════════════════════════════════════╗
+     ║  HOME SCREEN                         ║
+     ╚══════════════════════════════════════╝ -->
+<div id="screen-home" class="screen active">
+  <div class="home-bg"></div>
+  <header class="home-header">
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M8 34C12 26 20 18 32 14C28 20 24 30 24 38" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M24 38C26 32 30 22 40 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="38" r="3" fill="currentColor" opacity=".7"/><path d="M6 40C10 36 16 36 24 38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
       </div>
       <span class="logo-text">AveSampler</span>
-    </header>
-
-    <main class="home-main">
-      <div class="home-tag">Sistema de campo</div>
-      <h1 class="home-title">Registro de<br/><em>Muestreo de Aves</em></h1>
-      <p class="home-subtitle">
-        Recolecta datos biológicos en campo, adjunta fotografías y genera reportes LaTeX listos para publicación — sin conexión a internet.
-      </p>
-      <div class="home-badges">
-        <span class="badge">📡 Offline</span>
-        <span class="badge">📱 Multiplataforma</span>
-        <span class="badge">📄 LaTeX / PDF</span>
-      </div>
-      <div class="home-actions">
-        <button class="btn-primary" onclick="App.goTo('section-template')">
-          <span>Nuevo registro</span>
-          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button class="btn-ghost" onclick="App.openInstructions()">Ver instrucciones</button>
-        <!-- Android/Desktop: aparece automáticamente -->
-        <button class="btn-ghost" id="btn-install" onclick="App.installPWA()" style="display:none">
-          <svg viewBox="0 0 20 20" fill="none" style="width:16px;height:16px"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Instalar aplicación
-        </button>
-        <!-- iOS: instrucciones manuales -->
-        <button class="btn-ghost" id="btn-install-ios" onclick="App.showIOSBanner()" style="display:none">
-          <svg viewBox="0 0 20 20" fill="none" style="width:16px;height:16px"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Instalar en iPhone / iPad
-        </button>
-      </div>
-    </main>
-
-    <div class="home-footer">
-      <span id="offline-badge" class="offline-indicator" style="display:none">● Sin conexión</span>
     </div>
-  </div>
-
-  <!-- ░░ iOS INSTALL BANNER ░░ -->
-  <div id="ios-install-banner" class="ios-banner" style="display:none">
-    <div class="ios-banner-inner">
-      <img src="icons/icon-96.png" class="ios-banner-icon" alt="AveSampler" />
-      <div class="ios-banner-text">
-        <strong>Instalar AveSampler</strong>
-        <span>Toca <b>Compartir</b> <span class="share-icon">⎙</span> y luego <b>"Agregar a inicio"</b></span>
-      </div>
-      <button class="ios-banner-close" onclick="App.closeIOSBanner()">✕</button>
+    <button class="ham-btn" onclick="UI.openPanel()">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </header>
+  <main class="home-main">
+    <span class="home-tag">Sistema de campo · Colombia</span>
+    <h1 class="home-title">Registro de<br/><em>Muestreo de Aves</em></h1>
+    <p class="home-sub">Recolecta datos, adjunta fotos por especie y genera reportes PDF&nbsp;+&nbsp;LaTeX sin conexión.</p>
+    <div class="home-badges">
+      <span class="badge">📡 Offline</span>
+      <span class="badge">📱 iOS · Android</span>
+      <span class="badge">📄 PDF · LaTeX</span>
+      <span class="badge">🐦 +140 especies</span>
     </div>
-    <div class="ios-banner-arrow">▼</div>
-  </div>
-
-  <!-- ░░ MODAL: INSTRUCTIONS ░░ -->
-  <div id="modal-instructions" class="modal-overlay" onclick="App.closeInstructions(event)">
-    <div class="modal-box">
-      <button class="modal-close" onclick="App.closeInstructions()">✕</button>
-      <h2 class="modal-title">Cómo usar AveSampler</h2>
-      <ol class="instruction-list">
-        <li>
-          <span class="step-num">01</span>
-          <div>
-            <strong>Selecciona la plantilla</strong>
-            <p>Elige el tipo de reporte: estándar, biodiversidad o registro extendido. Ingresa el nombre del proyecto y la fecha.</p>
-          </div>
-        </li>
-        <li>
-          <span class="step-num">02</span>
-          <div>
-            <strong>Completa los datos de muestreo</strong>
-            <p>Registra ubicación, coordenadas, método de muestreo, condiciones climáticas y las especies observadas.</p>
-          </div>
-        </li>
-        <li>
-          <span class="step-num">03</span>
-          <div>
-            <strong>Agrega fotografías</strong>
-            <p>Adjunta imágenes desde tu galería o toma fotos directamente con la cámara. Formatos JPG y PNG.</p>
-          </div>
-        </li>
-        <li>
-          <span class="step-num">04</span>
-          <div>
-            <strong>Genera el reporte</strong>
-            <p>El sistema clona la plantilla LaTeX, inserta los datos y genera un archivo <code>.tex</code> + <code>.pdf</code> comprimidos en un ZIP listo para descargar.</p>
-          </div>
-        </li>
-      </ol>
-      <div class="modal-note">
-        <strong>Funciona sin internet.</strong> Todos los datos se guardan localmente. La compilación a PDF requiere conexión si no tienes LaTeX instalado.
-      </div>
-      <button class="btn-primary" onclick="App.closeInstructions(); App.goTo('section-template')" style="width:100%;margin-top:1.5rem">
-        <span>Comenzar ahora</span>
+    <div class="home-actions">
+      <button class="btn-primary" onclick="App.newRecord()">
+        <span>Nuevo registro</span>
         <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
+      <button class="btn-outline" onclick="UI.openInstructions()">Ver instrucciones</button>
+      <button class="btn-outline" id="btn-install" style="display:none" onclick="App.installPWA()">
+        <svg viewBox="0 0 20 20" fill="none" style="width:15px;height:15px"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Instalar app
+      </button>
+      <button class="btn-outline" id="btn-ios" style="display:none" onclick="UI.showIOSBanner()">
+        <svg viewBox="0 0 20 20" fill="none" style="width:15px;height:15px"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Instalar en iPhone/iPad
+      </button>
+    </div>
+  </main>
+  <div class="home-foot">
+    <span id="offline-badge" class="offline-pill" style="display:none">● Sin conexión</span>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════╗
+     ║  iOS BANNER                          ║
+     ╚══════════════════════════════════════╝ -->
+<div id="ios-banner" class="ios-banner" style="display:none">
+  <div class="ios-banner-body">
+    <img src="icons/icon-96.png" class="ios-banner-icon" alt=""/>
+    <div class="ios-banner-text">
+      <strong>Instalar AveSampler</strong>
+      <span>Toca <b>Compartir</b> <span class="share-icon">⎙</span> → <b>"Agregar a inicio"</b></span>
+    </div>
+    <button class="ios-banner-x" onclick="UI.closeIOSBanner()">✕</button>
+  </div>
+  <div class="ios-arrow">▼</div>
+</div>
+
+<!-- ╔══════════════════════════════════════╗
+     ║  INSTRUCTIONS MODAL                  ║
+     ╚══════════════════════════════════════╝ -->
+<div id="modal-instructions" class="overlay" onclick="UI.closeInstructions(event)">
+  <div class="modal-box">
+    <button class="modal-x" onclick="UI.closeInstructions()">✕</button>
+    <h2 class="modal-title">Cómo usar AveSampler</h2>
+    <ol class="inst-list">
+      <li><span class="inst-n">01</span><div><strong>Plantilla</strong><p>Elige el tipo de reporte, nombre del proyecto y fecha.</p></div></li>
+      <li><span class="inst-n">02</span><div><strong>Sitio y metodología</strong><p>Ubicación, coordenadas GPS, ecosistema, método y condiciones climáticas.</p></div></li>
+      <li><span class="inst-n">03</span><div><strong>Especies</strong><p>Selecciona familia → especie de la base de datos. Agrega fotos por cada ave.</p></div></li>
+      <li><span class="inst-n">04</span><div><strong>Fotos generales</strong><p>Fotografías del hábitat y contexto del muestreo.</p></div></li>
+      <li><span class="inst-n">05</span><div><strong>Reporte</strong><p>Se genera el PDF con fotos integradas y el ZIP con todo (PDF + TEX + fotos + JSON).</p></div></li>
+    </ol>
+    <div class="modal-note">
+      <strong>Historial ☰:</strong> Todos los registros se guardan localmente. Re-descarga reportes anteriores desde el menú.
+    </div>
+    <button class="btn-primary" style="width:100%;margin-top:1.25rem" onclick="UI.closeInstructions();App.newRecord()"><span>Comenzar ahora</span></button>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════╗
+     ║  RECORDS PANEL (hamburger)           ║
+     ╚══════════════════════════════════════╝ -->
+<div id="panel-overlay" class="panel-overlay" style="display:none" onclick="UI.closePanel()"></div>
+<aside id="records-panel" class="records-panel">
+  <div class="panel-head">
+    <h2>Historial</h2>
+    <button class="modal-x white-x" onclick="UI.closePanel()">✕</button>
+  </div>
+  <div id="records-list" class="records-list">
+    <div id="records-empty" class="records-empty">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="6" width="32" height="36" rx="3" stroke="currentColor" stroke-width="1.8" opacity=".3"/><path d="M16 16h16M16 22h16M16 28h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".3"/></svg>
+      <p>Aún no hay registros</p>
     </div>
   </div>
+  <div class="panel-foot">
+    <button class="btn-secondary" style="width:100%" onclick="App.exportAllJSON()">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Exportar todo como JSON</span>
+    </button>
+  </div>
+</aside>
 
-  <!-- ░░ APP SHELL ░░ -->
-  <div id="screen-app" class="screen">
+<!-- ╔══════════════════════════════════════╗
+     ║  DOWNLOAD MODAL                      ║
+     ╚══════════════════════════════════════╝ -->
+<div id="dl-modal" class="overlay" style="display:none">
+  <div class="modal-box dl-modal-box">
+    <!-- Progress -->
+    <div id="dl-progress-phase">
+      <div class="dl-spinner-wrap"><div class="dl-spinner"></div></div>
+      <h3 class="dl-title">Generando reporte...</h3>
+      <div class="prog-bar-wrap"><div class="prog-bar-fill" id="dl-prog-fill"></div></div>
+      <p id="dl-prog-msg" class="dl-msg">Preparando archivos...</p>
+    </div>
+    <!-- Done -->
+    <div id="dl-done-phase" style="display:none">
+      <div class="dl-check">✓</div>
+      <h3 class="dl-title">¡Listo para descargar!</h3>
+      <p class="dl-sub">Toca cada botón para guardar el archivo</p>
+      <div class="dl-btns">
+        <button class="dl-btn-pdf" onclick="App.dlFile('pdf')">
+          <span class="dl-ico">📄</span>
+          <div class="dl-btn-txt">
+            <strong>Descargar PDF</strong>
+            <span id="dl-pdf-name">reporte.pdf</span>
+          </div>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="dl-btn-zip" onclick="App.dlFile('zip')">
+          <span class="dl-ico">🗜</span>
+          <div class="dl-btn-txt">
+            <strong>Descargar ZIP completo</strong>
+            <span id="dl-zip-name">reporte.zip</span>
+            <em>PDF + TEX + Fotos + JSON</em>
+          </div>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="dl-done-actions">
+        <button class="btn-primary" onclick="App.newRecord()"><span>Nuevo registro</span></button>
+        <button class="btn-secondary" onclick="UI.closeDLModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Top nav -->
-    <nav class="app-nav">
-      <button class="nav-back" onclick="App.back()">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ╔══════════════════════════════════════╗
+     ║  APP SHELL                           ║
+     ╚══════════════════════════════════════╝ -->
+<div id="screen-app" class="screen">
+  <!-- Nav -->
+  <nav class="app-nav">
+    <button class="nav-back" onclick="App.back()">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <span id="nav-title" class="nav-title">Plantilla</span>
+    <div style="display:flex;align-items:center;gap:.4rem">
+      <span id="nav-step" class="nav-step">1/5</span>
+      <button class="ham-btn ham-dark" onclick="UI.openPanel()">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-      <span class="nav-title" id="nav-title">Plantilla</span>
-      <span class="nav-step" id="nav-step">1 / 4</span>
-    </nav>
+    </div>
+  </nav>
+  <div class="prog-line-wrap"><div id="prog-line" class="prog-line"></div></div>
+  <!-- Steps -->
+  <div class="steps-row">
+    <div class="sdot active" data-s="1"><span>1</span><label>Plantilla</label></div>
+    <div class="sline"></div>
+    <div class="sdot" data-s="2"><span>2</span><label>Sitio</label></div>
+    <div class="sline"></div>
+    <div class="sdot" data-s="3"><span>3</span><label>Especies</label></div>
+    <div class="sline"></div>
+    <div class="sdot" data-s="4"><span>4</span><label>Fotos</label></div>
+    <div class="sline"></div>
+    <div class="sdot" data-s="5"><span>5</span><label>Reporte</label></div>
+  </div>
 
-    <!-- Progress bar -->
-    <div class="progress-wrap">
-      <div class="progress-bar" id="progress-bar"></div>
+  <!-- ──────────────────────────────────────
+       SECTION 1 — TEMPLATE
+       ────────────────────────────────────── -->
+  <section id="sec-template" class="fsec active">
+    <div class="sec-head"><h2>Selección de plantilla</h2><p>Elige el tipo de reporte y los datos del proyecto</p></div>
+
+    <div class="fgroup">
+      <label class="flabel req">Tipo de plantilla</label>
+      <div id="tpl-cards">
+        <div class="tpl-card sel" data-v="aves_estandar" onclick="App.pickTpl(this)">
+          <div class="tpl-ico">🦜</div>
+          <div class="tpl-info"><strong>Muestreo estándar</strong><span>Protocolo básico de avistamiento</span></div>
+          <div class="tpl-chk">✓</div>
+        </div>
+        <div class="tpl-card" data-v="biodiversidad" onclick="App.pickTpl(this)">
+          <div class="tpl-ico">🌿</div>
+          <div class="tpl-info"><strong>Monitoreo de biodiversidad</strong><span>Registro multiespecies con índices</span></div>
+          <div class="tpl-chk">✓</div>
+        </div>
+        <div class="tpl-card" data-v="registro_extendido" onclick="App.pickTpl(this)">
+          <div class="tpl-ico">📋</div>
+          <div class="tpl-info"><strong>Registro de campo extendido</strong><span>Ficha técnica para publicación</span></div>
+          <div class="tpl-chk">✓</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Step indicators -->
-    <div class="steps-row">
-      <div class="step-dot active" data-step="1">
-        <span>1</span><label>Plantilla</label>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-dot" data-step="2">
-        <span>2</span><label>Muestreo</label>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-dot" data-step="3">
-        <span>3</span><label>Fotos</label>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-dot" data-step="4">
-        <span>4</span><label>Reporte</label>
-      </div>
+    <div class="frow">
+      <div class="fgroup"><label class="flabel req" for="f-name">Nombre del proyecto</label><input id="f-name" class="finput" type="text" placeholder="Ej: ReservaBosqueAndino"/></div>
+      <div class="fgroup"><label class="flabel req" for="f-date">Fecha del muestreo</label><input id="f-date" class="finput" type="date"/></div>
+    </div>
+    <div class="frow">
+      <div class="fgroup"><label class="flabel" for="f-author">Autor / Investigador</label><input id="f-author" class="finput" type="text" placeholder="Nombre completo"/></div>
+      <div class="fgroup"><label class="flabel" for="f-inst">Institución</label><input id="f-inst" class="finput" type="text" placeholder="Universidad / Organización"/></div>
     </div>
 
-    <!-- ── SECTION 1: TEMPLATE ── -->
-    <section id="section-template" class="form-section active">
-      <div class="section-head">
-        <h2>Selección de plantilla</h2>
-        <p>Elige el tipo de reporte y define el proyecto</p>
+    <div class="sec-foot">
+      <div></div>
+      <button class="btn-primary" onclick="App.next('sec-sampling')"><span>Continuar</span><svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────
+       SECTION 2 — SAMPLING
+       ────────────────────────────────────── -->
+  <section id="sec-sampling" class="fsec">
+    <div class="sec-head"><h2>Datos del muestreo</h2><p>Sitio, condiciones climáticas y metodología</p></div>
+
+    <fieldset class="fset">
+      <legend>📍 Sitio de muestreo</legend>
+      <div class="fgroup"><label class="flabel req" for="f-loc">Ubicación / Localidad</label><input id="f-loc" class="finput" type="text" placeholder="Nombre del sitio"/></div>
+      <div class="frow three">
+        <div class="fgroup"><label class="flabel" for="f-lat">Latitud</label><input id="f-lat" class="finput" type="number" step="0.000001" placeholder="4.7110"/></div>
+        <div class="fgroup"><label class="flabel" for="f-lon">Longitud</label><input id="f-lon" class="finput" type="number" step="0.000001" placeholder="-74.0721"/></div>
+        <div class="fgroup"><label class="flabel" for="f-alt">Altitud (m)</label><input id="f-alt" class="finput" type="number" placeholder="2600"/></div>
       </div>
-
-      <div class="form-group">
-        <label class="form-label required">Tipo de plantilla</label>
-        <div class="template-cards" id="template-cards">
-          <div class="template-card selected" data-value="aves_estandar" onclick="App.selectTemplate(this)">
-            <div class="tcard-icon">🦜</div>
-            <div class="tcard-info">
-              <strong>Muestreo estándar</strong>
-              <span>Protocolo básico de avistamiento</span>
-            </div>
-            <div class="tcard-check">✓</div>
-          </div>
-          <div class="template-card" data-value="biodiversidad" onclick="App.selectTemplate(this)">
-            <div class="tcard-icon">🌿</div>
-            <div class="tcard-info">
-              <strong>Monitoreo de biodiversidad</strong>
-              <span>Registro multiespecies con índices</span>
-            </div>
-            <div class="tcard-check">✓</div>
-          </div>
-          <div class="template-card" data-value="registro_extendido" onclick="App.selectTemplate(this)">
-            <div class="tcard-icon">📋</div>
-            <div class="tcard-info">
-              <strong>Registro de campo extendido</strong>
-              <span>Datos detallados para publicación</span>
-            </div>
-            <div class="tcard-check">✓</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label required" for="project-name">Nombre del proyecto</label>
-          <input type="text" id="project-name" class="form-input" placeholder="Ej: ReservaBosque" />
-          <span class="form-hint">Se usará para nombrar la carpeta de archivos</span>
-        </div>
-        <div class="form-group">
-          <label class="form-label required" for="project-date">Fecha del muestreo</label>
-          <input type="date" id="project-date" class="form-input" />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="project-author">Autor / Investigador</label>
-        <input type="text" id="project-author" class="form-input" placeholder="Nombre completo" />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="project-institution">Institución</label>
-        <input type="text" id="project-institution" class="form-input" placeholder="Universidad / Organización" />
-      </div>
-
-      <div class="section-footer">
-        <div></div>
-        <button class="btn-primary" onclick="App.nextSection('section-sampling')">
-          <span>Continuar</span>
-          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-    </section>
-
-    <!-- ── SECTION 2: SAMPLING DATA ── -->
-    <section id="section-sampling" class="form-section">
-      <div class="section-head">
-        <h2>Datos del muestreo</h2>
-        <p>Información del sitio y condiciones de campo</p>
-      </div>
-
-      <!-- Location -->
-      <fieldset class="form-fieldset">
-        <legend>📍 Información del sitio</legend>
-        <div class="form-group">
-          <label class="form-label required" for="location">Ubicación / Localidad</label>
-          <input type="text" id="location" class="form-input" placeholder="Nombre del sitio de muestreo" />
-        </div>
-        <div class="form-row three-col">
-          <div class="form-group">
-            <label class="form-label" for="lat">Latitud</label>
-            <input type="number" id="lat" class="form-input" placeholder="4.7110" step="0.000001" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lon">Longitud</label>
-            <input type="number" id="lon" class="form-input" placeholder="-74.0721" step="0.000001" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="altitude">Altitud (m)</label>
-            <input type="number" id="altitude" class="form-input" placeholder="2600" />
-          </div>
-        </div>
-        <button class="btn-ghost btn-sm" onclick="App.getGPS()" style="margin-top:.5rem">
-          <svg viewBox="0 0 20 20" fill="none" style="width:16px;height:16px"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          Usar GPS del dispositivo
-        </button>
-        <div class="form-group" style="margin-top:1rem">
-          <label class="form-label" for="ecosystem">Tipo de ecosistema</label>
-          <select id="ecosystem" class="form-input">
-            <option value="">Seleccionar...</option>
-            <option>Bosque andino</option>
-            <option>Bosque tropical húmedo</option>
-            <option>Páramo</option>
-            <option>Humedal / Wetland</option>
-            <option>Bosque seco</option>
-            <option>Sabana / Pastizal</option>
-            <option>Manglar</option>
-            <option>Zona urbana / periurbana</option>
-            <option>Otro</option>
-          </select>
-        </div>
-      </fieldset>
-
-      <!-- Climate -->
-      <fieldset class="form-fieldset">
-        <legend>🌤 Condiciones climáticas</legend>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="weather">Clima</label>
-            <select id="weather" class="form-input">
-              <option value="">Seleccionar...</option>
-              <option>Despejado</option>
-              <option>Parcialmente nublado</option>
-              <option>Nublado</option>
-              <option>Lluvioso</option>
-              <option>Neblinoso</option>
-              <option>Ventoso</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="temperature">Temperatura (°C)</label>
-            <input type="number" id="temperature" class="form-input" placeholder="18" />
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- Sampling method -->
-      <fieldset class="form-fieldset">
-        <legend>🔬 Método de muestreo</legend>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="method">Método</label>
-            <select id="method" class="form-input">
-              <option value="">Seleccionar...</option>
-              <option>Punto de conteo</option>
-              <option>Transecto lineal</option>
-              <option>Redes de niebla</option>
-              <option>Observación directa</option>
-              <option>Playback / Grabaciones</option>
-              <option>Cámara trampa</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="duration">Duración (min)</label>
-            <input type="number" id="duration" class="form-input" placeholder="60" />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="time-start">Hora de inicio</label>
-            <input type="time" id="time-start" class="form-input" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="time-end">Hora de finalización</label>
-            <input type="time" id="time-end" class="form-input" />
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- Observer -->
-      <fieldset class="form-fieldset">
-        <legend>👤 Observador</legend>
-        <div class="form-group">
-          <label class="form-label" for="observer">Nombre del observador</label>
-          <input type="text" id="observer" class="form-input" placeholder="Nombre completo" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="sampling-notes">Observaciones generales</label>
-          <textarea id="sampling-notes" class="form-input form-textarea" placeholder="Notas sobre el contexto del muestreo, condiciones especiales, etc." rows="3"></textarea>
-        </div>
-      </fieldset>
-
-      <!-- Species records -->
-      <fieldset class="form-fieldset">
-        <legend>🐦 Registro de especies</legend>
-        <div id="species-list">
-          <!-- Species rows injected by JS -->
-        </div>
-        <button class="btn-add-species" onclick="App.addSpecies()">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          Agregar especie
-        </button>
-      </fieldset>
-
-      <div class="section-footer">
-        <button class="btn-secondary" onclick="App.prevSection('section-template')">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>Atrás</span>
-        </button>
-        <button class="btn-primary" onclick="App.nextSection('section-photos')">
-          <span>Continuar</span>
-          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-    </section>
-
-    <!-- ── SECTION 3: PHOTOS ── -->
-    <section id="section-photos" class="form-section">
-      <div class="section-head">
-        <h2>Fotografías</h2>
-        <p>Adjunta imágenes del muestreo (máx. 10)</p>
-      </div>
-
-      <div class="photo-actions">
-        <label class="photo-btn" for="photo-file">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.8"/><path d="M9 5l1.5-2h3L15 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Agregar desde galería
-          <input type="file" id="photo-file" accept="image/jpeg,image/png,image/jpg" multiple hidden onchange="App.handlePhotoUpload(event)" />
-        </label>
-        <button class="photo-btn" onclick="App.openCamera()">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7z" stroke="currentColor" stroke-width="1.8"/><path d="M3 9a2 2 0 0 1 2-2h1l2-2h8l2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke="currentColor" stroke-width="1.8"/></svg>
-          Tomar fotografía
-        </button>
-      </div>
-
-      <input type="file" id="camera-input" accept="image/*" capture="environment" hidden onchange="App.handlePhotoUpload(event)" />
-
-      <div id="photo-grid" class="photo-grid">
-        <div class="photo-empty" id="photo-empty">
-          <svg viewBox="0 0 64 64" fill="none"><rect x="8" y="14" width="48" height="36" rx="4" stroke="currentColor" stroke-width="2" opacity=".3"/><circle cx="32" cy="32" r="9" stroke="currentColor" stroke-width="2" opacity=".3"/><path d="M24 14l4-6h8l4 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".3"/></svg>
-          <p>Aún no hay fotografías</p>
-        </div>
-      </div>
-
-      <div id="photo-count" class="photo-count" style="display:none"></div>
-
-      <!-- Caption modal -->
-      <div id="caption-modal" class="modal-overlay" style="display:none" onclick="App.closeCaptionModal(event)">
-        <div class="modal-box small">
-          <h3>Leyenda de la foto</h3>
-          <textarea id="caption-input" class="form-input form-textarea" placeholder="Descripción de la imagen (especie, comportamiento, contexto)..." rows="3"></textarea>
-          <div style="display:flex;gap:.75rem;margin-top:1rem">
-            <button class="btn-secondary" style="flex:1" onclick="App.closeCaptionModal()">Omitir</button>
-            <button class="btn-primary" style="flex:1" onclick="App.saveCaption()"><span>Guardar</span></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-footer">
-        <button class="btn-secondary" onclick="App.prevSection('section-sampling')">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>Atrás</span>
-        </button>
-        <button class="btn-primary" onclick="App.nextSection('section-report')">
-          <span>Continuar</span>
-          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-    </section>
-
-    <!-- ── SECTION 4: REPORT ── -->
-    <section id="section-report" class="form-section">
-      <div class="section-head">
-        <h2>Generar reporte</h2>
-        <p>Revisión final — se descargarán los archivos directamente</p>
-      </div>
-
-      <div id="report-summary" class="report-summary">
-        <!-- Filled dynamically -->
-      </div>
-
-      <div class="generate-box" id="generate-box-info">
-        <div class="generate-icon">
-          <svg viewBox="0 0 64 64" fill="none">
-            <rect x="12" y="6" width="40" height="52" rx="4" stroke="currentColor" stroke-width="2"/>
-            <path d="M20 20h24M20 28h24M20 36h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M36 44l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h3>Archivos que se descargarán</h3>
-        <ul class="generate-list">
-          <li>
-            <span class="file-badge pdf">PDF</span>
-            <code id="pdf-filename">reporte.pdf</code>
-            <span class="file-desc">— Reporte completo listo para usar</span>
-          </li>
-          <li>
-            <span class="file-badge tex">TEX</span>
-            <code id="tex-filename">reporte.tex</code>
-            <span class="file-desc">— Código fuente LaTeX editable</span>
-          </li>
-          <li id="photos-line" style="display:none">
-            <span class="file-badge img">IMG</span>
-            <span id="photos-count-label">N fotografías</span>
-            <span class="file-desc">— Imágenes adjuntas del muestreo</span>
-          </li>
-        </ul>
-        <p class="generate-note">
-          El navegador descargará cada archivo por separado a tu carpeta de descargas.
-          Puedes moverlos juntos a una carpeta con el nombre del proyecto.
-        </p>
-      </div>
-
-      <!-- Progress indicator -->
-      <div id="gen-progress" class="gen-progress" style="display:none">
-        <div class="gen-progress-bar">
-          <div class="gen-progress-fill" id="gen-progress-fill"></div>
-        </div>
-        <p id="gen-progress-msg">Preparando archivos...</p>
-      </div>
-
-      <button class="btn-primary btn-generate" id="btn-generate" onclick="App.generateReport()">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Generar y descargar archivos</span>
+      <button class="btn-sm-ghost" onclick="App.getGPS()">
+        <svg viewBox="0 0 20 20" fill="none" style="width:14px;height:14px"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Usar GPS del dispositivo
       </button>
-
-      <!-- Success -->
-      <div id="gen-success" class="gen-success" style="display:none">
-        <div class="success-icon">✓</div>
-        <h3>¡Archivos descargados!</h3>
-        <p class="success-subtitle">Revisa tu carpeta de descargas</p>
-        <div id="downloaded-files-list" class="downloaded-files-list">
-          <!-- filled dynamically -->
-        </div>
-        <div class="success-actions" style="margin-top:1.5rem">
-          <button class="btn-primary" onclick="App.newRecord()">
-            <span>Nuevo registro</span>
-          </button>
-          <button class="btn-ghost" onclick="App.goTo('screen-home')">Ir al inicio</button>
-        </div>
+      <div class="fgroup mt1"><label class="flabel" for="f-eco">Tipo de ecosistema</label>
+        <select id="f-eco" class="finput"><option value="">Seleccionar...</option><option>Bosque andino</option><option>Bosque tropical húmedo</option><option>Páramo</option><option>Humedal / Wetland</option><option>Bosque seco</option><option>Sabana / Pastizal</option><option>Manglar</option><option>Zona urbana / periurbana</option><option>Otro</option></select>
       </div>
+    </fieldset>
 
-      <div class="section-footer" id="report-footer">
-        <button class="btn-secondary" onclick="App.prevSection('section-photos')">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>Atrás</span>
-        </button>
-        <div></div>
+    <fieldset class="fset">
+      <legend>🌤 Condiciones climáticas</legend>
+      <div class="frow">
+        <div class="fgroup"><label class="flabel" for="f-wx">Clima</label><select id="f-wx" class="finput"><option value="">Seleccionar...</option><option>Despejado</option><option>Parcialmente nublado</option><option>Nublado</option><option>Lluvioso</option><option>Neblinoso</option><option>Ventoso</option></select></div>
+        <div class="fgroup"><label class="flabel" for="f-temp">Temperatura (°C)</label><input id="f-temp" class="finput" type="number" placeholder="18"/></div>
       </div>
-    </section>
+    </fieldset>
 
-  </div><!-- end #screen-app -->
+    <fieldset class="fset">
+      <legend>🔬 Metodología</legend>
+      <div class="frow">
+        <div class="fgroup"><label class="flabel" for="f-method">Método de muestreo</label><select id="f-method" class="finput"><option value="">Seleccionar...</option><option>Punto de conteo</option><option>Transecto lineal</option><option>Redes de niebla</option><option>Observación directa</option><option>Playback / Grabaciones</option><option>Cámara trampa</option><option>Otro</option></select></div>
+        <div class="fgroup"><label class="flabel" for="f-dur">Duración (min)</label><input id="f-dur" class="finput" type="number" placeholder="60"/></div>
+      </div>
+      <div class="frow">
+        <div class="fgroup"><label class="flabel" for="f-ts">Hora inicio</label><input id="f-ts" class="finput" type="time"/></div>
+        <div class="fgroup"><label class="flabel" for="f-te">Hora fin</label><input id="f-te" class="finput" type="time"/></div>
+      </div>
+      <div class="fgroup"><label class="flabel" for="f-obs">Observador</label><input id="f-obs" class="finput" type="text" placeholder="Nombre completo"/></div>
+      <div class="fgroup"><label class="flabel" for="f-notes">Observaciones generales</label><textarea id="f-notes" class="finput ftextarea" rows="3" placeholder="Notas del contexto del muestreo..."></textarea></div>
+    </fieldset>
 
-  <!-- Toast -->
-  <div id="toast" class="toast" style="display:none"></div>
+    <div class="sec-foot">
+      <button class="btn-secondary" onclick="App.prev('sec-template')"><svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Atrás</span></button>
+      <button class="btn-primary" onclick="App.next('sec-species')"><span>Continuar</span><svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </section>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
-  <script src="app.js"></script>
+  <!-- ──────────────────────────────────────
+       SECTION 3 — SPECIES
+       ────────────────────────────────────── -->
+  <section id="sec-species" class="fsec">
+    <div class="sec-head"><h2>Registro de especies</h2><p>Familia → Especie desde la base de datos. Agrega fotos por cada ave.</p></div>
+    <div id="species-list"></div>
+    <button class="btn-add-sp" onclick="App.addSpecies()">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Agregar especie observada
+    </button>
+    <div class="sec-foot">
+      <button class="btn-secondary" onclick="App.prev('sec-sampling')"><svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Atrás</span></button>
+      <button class="btn-primary" onclick="App.next('sec-photos')"><span>Continuar</span><svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────
+       SECTION 4 — GENERAL PHOTOS
+       ────────────────────────────────────── -->
+  <section id="sec-photos" class="fsec">
+    <div class="sec-head"><h2>Fotos generales</h2><p>Fotografías del hábitat y contexto del muestreo</p></div>
+    <div class="photo-actions">
+      <label class="photo-btn" for="input-gen-photo">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.8"/></svg>
+        Galería
+        <input id="input-gen-photo" type="file" accept="image/jpeg,image/png,image/jpg" multiple hidden onchange="App.addPhotos(event,'gen')"/>
+      </label>
+      <button class="photo-btn" onclick="document.getElementById('input-gen-cam').click()">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7z" stroke="currentColor" stroke-width="1.8"/><path d="M3 9a2 2 0 0 1 2-2h1l2-2h8l2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke="currentColor" stroke-width="1.8"/></svg>
+        Cámara
+      </button>
+      <input id="input-gen-cam" type="file" accept="image/*" capture="environment" hidden onchange="App.addPhotos(event,'gen')"/>
+    </div>
+    <div id="gen-photo-grid" class="photo-grid">
+      <div id="gen-photo-empty" class="photo-empty">
+        <svg viewBox="0 0 64 64" fill="none"><rect x="8" y="14" width="48" height="36" rx="4" stroke="currentColor" stroke-width="2" opacity=".3"/><circle cx="32" cy="32" r="9" stroke="currentColor" stroke-width="2" opacity=".3"/></svg>
+        <p>Sin fotos generales aún</p>
+      </div>
+    </div>
+    <div id="gen-photo-count" class="photo-count" style="display:none"></div>
+    <div class="sec-foot">
+      <button class="btn-secondary" onclick="App.prev('sec-species')"><svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Atrás</span></button>
+      <button class="btn-primary" onclick="App.next('sec-report')"><span>Continuar</span><svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────
+       SECTION 5 — REPORT
+       ────────────────────────────────────── -->
+  <section id="sec-report" class="fsec">
+    <div class="sec-head"><h2>Generar reporte</h2><p>Revisión final antes de descargar</p></div>
+    <div id="report-summary" class="report-summary"></div>
+    <div class="gen-box">
+      <div class="gen-box-icon">
+        <svg viewBox="0 0 64 64" fill="none"><rect x="12" y="6" width="40" height="52" rx="4" stroke="currentColor" stroke-width="2"/><path d="M20 20h24M20 28h24M20 36h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M36 44l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Archivos que se generarán</h3>
+      <ul class="gen-file-list">
+        <li><span class="fbadge pdf">PDF</span><code id="lbl-pdf">reporte.pdf</code> — Reporte completo con fotos integradas</li>
+        <li><span class="fbadge zip">ZIP</span><code id="lbl-zip">reporte.zip</code> — PDF + TEX + Fotos + JSON de datos</li>
+      </ul>
+      <p class="gen-note">El ZIP incluye el fuente <code>.tex</code> para personalizar en Overleaf o LaTeX local.</p>
+    </div>
+    <button class="btn-primary btn-gen" id="btn-gen" onclick="App.generate()">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Generar y descargar</span>
+    </button>
+    <div class="sec-foot" id="report-sec-foot">
+      <button class="btn-secondary" onclick="App.prev('sec-photos')"><svg viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Atrás</span></button>
+      <div></div>
+    </div>
+  </section>
+</div><!-- /screen-app -->
+
+<!-- Caption modal -->
+<div id="caption-modal" class="overlay" style="display:none" onclick="App.closeCaptionModal(event)">
+  <div class="modal-box small-box">
+    <h3>Leyenda de la foto</h3>
+    <textarea id="caption-input" class="finput ftextarea" rows="3" placeholder="Descripción de la imagen (especie, comportamiento, contexto)..."></textarea>
+    <div style="display:flex;gap:.75rem;margin-top:1rem">
+      <button class="btn-secondary" style="flex:1" onclick="App.closeCaptionModal()">Omitir</button>
+      <button class="btn-primary" style="flex:1" onclick="App.saveCaption()"><span>Guardar</span></button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" style="display:none"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
