@@ -62,9 +62,41 @@ const App = {
     // Load saved draft
     App.loadDraft();
 
-    // Register service worker
+    // Register service worker with correct scope for GitHub Pages subdirectory
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js').catch(() => {});
+      // Detect base path from current location (works on any host/subdirectory)
+      const swPath = new URL('service-worker.js', window.location.href).href;
+      navigator.serviceWorker.register(swPath, {
+        scope: new URL('./', window.location.href).href,
+      }).then(reg => {
+        console.log('[App] SW registered, scope:', reg.scope);
+        // Check for update
+        reg.addEventListener('updatefound', () => {
+          const newWorker = reg.installing;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              newWorker.postMessage({ action: 'skipWaiting' });
+            }
+          });
+        });
+      }).catch(e => console.warn('[App] SW registration failed:', e));
+    }
+
+    // iOS detection for install banner
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isInStandalone = navigator.standalone === true ||
+                           window.matchMedia('(display-mode: standalone)').matches;
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isIOS && !isInStandalone) {
+      // Show iOS install button always — Safari doesn't fire beforeinstallprompt
+      const iosBtn = document.getElementById('btn-install-ios');
+      if (iosBtn) iosBtn.style.display = 'inline-flex';
+      // Auto-show banner once if user hasn't dismissed it
+      if (!localStorage.getItem('ios_banner_dismissed')) {
+        setTimeout(() => App.showIOSBanner(), 2500);
+      }
     }
   },
 
@@ -1146,6 +1178,17 @@ AveSampler © ${new Date().getFullYear()} — Sistema de Registro de Muestreo de
       State.deferredInstall = null;
       document.getElementById('btn-install').style.display = 'none';
     }
+  },
+
+  showIOSBanner() {
+    const banner = document.getElementById('ios-install-banner');
+    if (banner) banner.style.display = 'block';
+  },
+
+  closeIOSBanner() {
+    const banner = document.getElementById('ios-install-banner');
+    if (banner) banner.style.display = 'none';
+    try { localStorage.setItem('ios_banner_dismissed', '1'); } catch(e) {}
   },
 
   // ── ONLINE STATUS ───────────────────────────────────────

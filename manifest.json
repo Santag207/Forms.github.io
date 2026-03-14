@@ -1,9 +1,9 @@
 {
   "name": "AveSampler — Registro de Muestreo de Aves",
   "short_name": "AveSampler",
-  "description": "Sistema de recolección de datos biológicos en campo para muestreo de aves con generación automática de reportes LaTeX.",
-  "start_url": "/",
-  "scope": "/",
+  "description": "Sistema de recolección de datos biológicos en campo para muestreo de aves con generación automática de reportes.",
+  "start_url": "/Forms.github.io/",
+  "scope": "/Forms.github.io/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#1c3d2c",
@@ -16,31 +16,31 @@
       "src": "icons/icon-72.png",
       "sizes": "72x72",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "icons/icon-96.png",
       "sizes": "96x96",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "icons/icon-128.png",
       "sizes": "128x128",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "icons/icon-144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "icons/icon-152.png",
       "sizes": "152x152",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "icons/icon-192.png",
@@ -61,21 +61,11 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "icons/screenshot-home.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Pantalla de inicio de AveSampler"
-    }
-  ],
   "shortcuts": [
     {
       "name": "Nuevo registro",
       "short_name": "Nuevo",
-      "description": "Iniciar un nuevo registro de muestreo",
-      "url": "/?action=new",
+      "url": "/Forms.github.io/",
       "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]
     }
   ],

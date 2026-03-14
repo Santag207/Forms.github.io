@@ -1080,6 +1080,86 @@ select.form-input { cursor: pointer; background-image: url("data:image/svg+xml,%
   margin-bottom: .25rem;
 }
 
+/* ── iOS INSTALL BANNER ── */
+.ios-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+  z-index: 300;
+  padding: 0 1rem 1rem;
+  pointer-events: none;
+}
+
+.ios-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  background: var(--white);
+  border: 1.5px solid var(--parchment-mid);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-lg);
+  pointer-events: all;
+  position: relative;
+}
+
+.ios-banner-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.ios-banner-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.ios-banner-text strong {
+  font-size: .92rem;
+  color: var(--text-dark);
+}
+
+.ios-banner-text span {
+  font-size: .8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.share-icon {
+  display: inline-block;
+  background: #007aff;
+  color: white;
+  border-radius: 5px;
+  padding: 0 4px;
+  font-size: .75rem;
+  margin: 0 1px;
+}
+
+.ios-banner-close {
+  background: var(--parchment);
+  border: none;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  font-size: .8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  position: absolute;
+  top: .65rem; right: .65rem;
+}
+
+.ios-banner-arrow {
+  text-align: center;
+  color: var(--white);
+  font-size: 1.1rem;
+  margin-top: .15rem;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+  pointer-events: none;
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

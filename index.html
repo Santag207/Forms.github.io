@@ -2,14 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- PWA / Android -->
   <meta name="theme-color" content="#1c3d2c" />
-  <meta name="description" content="Sistema de Registro de Muestreo de Aves — Recolección de datos biológicos en campo con generación automática de reportes." />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- iOS Safari PWA — OBLIGATORIO para instalar en iPhone/iPad -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="AveSampler" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-152.png" />
+  <link rel="apple-touch-icon" sizes="72x72"   href="icons/icon-72.png" />
+  <link rel="apple-touch-icon" sizes="96x96"   href="icons/icon-96.png" />
+  <link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png" />
+
+  <!-- General -->
+  <meta name="description" content="Sistema de Registro de Muestreo de Aves — Recolección de datos biológicos en campo con generación automática de reportes." />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+
   <title>AveSampler — Registro de Muestreo de Aves</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,9 +66,15 @@
           <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <button class="btn-ghost" onclick="App.openInstructions()">Ver instrucciones</button>
+        <!-- Android/Desktop: aparece automáticamente -->
         <button class="btn-ghost" id="btn-install" onclick="App.installPWA()" style="display:none">
           <svg viewBox="0 0 20 20" fill="none" style="width:16px;height:16px"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Instalar aplicación
+        </button>
+        <!-- iOS: instrucciones manuales -->
+        <button class="btn-ghost" id="btn-install-ios" onclick="App.showIOSBanner()" style="display:none">
+          <svg viewBox="0 0 20 20" fill="none" style="width:16px;height:16px"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Instalar en iPhone / iPad
         </button>
       </div>
     </main>
@@ -60,6 +82,19 @@
     <div class="home-footer">
       <span id="offline-badge" class="offline-indicator" style="display:none">● Sin conexión</span>
     </div>
+  </div>
+
+  <!-- ░░ iOS INSTALL BANNER ░░ -->
+  <div id="ios-install-banner" class="ios-banner" style="display:none">
+    <div class="ios-banner-inner">
+      <img src="icons/icon-96.png" class="ios-banner-icon" alt="AveSampler" />
+      <div class="ios-banner-text">
+        <strong>Instalar AveSampler</strong>
+        <span>Toca <b>Compartir</b> <span class="share-icon">⎙</span> y luego <b>"Agregar a inicio"</b></span>
+      </div>
+      <button class="ios-banner-close" onclick="App.closeIOSBanner()">✕</button>
+    </div>
+    <div class="ios-banner-arrow">▼</div>
   </div>
 
   <!-- ░░ MODAL: INSTRUCTIONS ░░ -->
