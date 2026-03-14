@@ -1,0 +1,189 @@
+\documentclass[12pt,a4paper]{article}
+
+% ── Encoding & language ──
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+% ── Layout ──
+\usepackage[top=2.5cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+% ── Graphics & tables ──
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xcolor}
+
+% ── Hyperlinks ──
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=darkgreen,
+  urlcolor=darkgreen,
+  pdftitle={Muestreo de Aves — {{nombre_proyecto}}},
+  pdfauthor={{{autor}}},
+}
+
+% ── Colors ──
+\definecolor{darkgreen}{RGB}{28,61,44}
+\definecolor{midgreen}{RGB}{45,92,64}
+\definecolor{lightgreen}{RGB}{200,221,210}
+\definecolor{amber}{RGB}{200,120,10}
+\definecolor{parchment}{RGB}{246,241,232}
+
+% ── Header / Footer ──
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small\textcolor{midgreen}{\textbf{AveSampler}}}
+\fancyhead[C]{\small\textcolor{midgreen}{Muestreo de Aves — {{nombre_proyecto}}}}
+\fancyhead[R]{\small\textcolor{midgreen}{{{fecha_raw}}}}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{\small\textcolor{gray}{Generado con AveSampler}}
+
+% ═══════════════════════════════════
+\begin{document}
+% ═══════════════════════════════════
+
+% ── Cover ──────────────────────────
+\begin{titlepage}
+  \pagecolor{darkgreen}
+  \color{white}
+  \vspace*{2cm}
+  \begin{center}
+    {\fontsize{10}{12}\selectfont\textcolor{lightgreen}{\textbf{\MakeUppercase{Reporte de muestreo estándar}}}}\\[1.5cm]
+    {\fontsize{28}{34}\selectfont\bfseries {{nombre_proyecto}}}\\[0.8cm]
+    {\fontsize{16}{20}\selectfont\itshape Registro de Avifauna en Campo}\\[2cm]
+    \noindent\textcolor{lightgreen}{\rule{0.6\textwidth}{0.4pt}}\\[1.5cm]
+    \begin{tabular}{rl}
+      \textcolor{lightgreen}{\small Fecha:}      & {{fecha}} \\[4pt]
+      \textcolor{lightgreen}{\small Autor:}       & {{autor}} \\[4pt]
+      \textcolor{lightgreen}{\small Institución:} & {{institucion}} \\[4pt]
+      \textcolor{lightgreen}{\small Ubicación:}   & {{ubicacion}} \\
+    \end{tabular}
+    \vfill
+    {\small\textcolor{lightgreen}{Generado con AveSampler — Sistema de Registro de Muestreo de Aves}}
+  \end{center}
+\end{titlepage}
+\nopagecolor
+
+% ── Table of contents ──────────────
+\tableofcontents
+\newpage
+
+% ══════════════════════════════════
+\section{Información General del Muestreo}
+% ══════════════════════════════════
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{4cm} p{10cm}}
+  \toprule
+  Proyecto        & {{nombre_proyecto}} \\
+  Fecha           & {{fecha}} \\
+  Autor           & {{autor}} \\
+  Institución     & {{institucion}} \\
+  \bottomrule
+\end{tabular}
+
+% ══════════════════════════════════
+\section{Descripción del Sitio}
+% ══════════════════════════════════
+
+\subsection{Localización}
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{4cm} p{10cm}}
+  \toprule
+  Ubicación       & {{ubicacion}} \\
+  Coordenadas     & {{coordenadas}} \\
+  Altitud         & {{altitud}} \\
+  Ecosistema      & {{ecosistema}} \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Condiciones Climáticas}
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{4cm} p{10cm}}
+  \toprule
+  Clima           & {{clima}} \\
+  Temperatura     & {{temperatura}} \\
+  \bottomrule
+\end{tabular}
+
+% ══════════════════════════════════
+\section{Metodología}
+% ══════════════════════════════════
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{4cm} p{10cm}}
+  \toprule
+  Método          & {{metodo}} \\
+  Duración        & {{duracion}} \\
+  Hora de inicio  & {{hora_inicio}} \\
+  Hora de fin     & {{hora_fin}} \\
+  Observador      & {{observador}} \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Observaciones Generales}
+
+{{notas_generales}}
+
+% ══════════════════════════════════
+\section{Registro de Especies}
+% ══════════════════════════════════
+
+\subsection{Resumen}
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{6cm} p{4cm}}
+  \toprule
+  Total de especies registradas  & {{total_especies}} \\
+  Total de individuos observados & {{total_individuos}} \\
+  Fotografías adjuntas           & {{total_fotos}} \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Lista de Especies Observadas}
+
+\rowcolors{2}{parchment}{white}
+\begin{longtable}{>{\bfseries}p{4.5cm} p{1.5cm} p{3cm} p{2.5cm} p{3cm}}
+  \toprule
+  \rowcolor{lightgreen}
+  \textbf{Especie} & \textbf{N} & \textbf{Comportamiento} & \textbf{Sexo/Edad} & \textbf{Notas} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \rowcolor{lightgreen}
+  \textbf{Especie} & \textbf{N} & \textbf{Comportamiento} & \textbf{Sexo/Edad} & \textbf{Notas} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  \hline
+{{tabla_especies}}
+\end{longtable}
+
+% ══════════════════════════════════
+\section{Registro Fotográfico}
+% ══════════════════════════════════
+
+{{fotografias}}
+
+% ══════════════════════════════════
+\section{Notas Finales}
+% ══════════════════════════════════
+
+Este reporte fue generado automáticamente por \textbf{AveSampler} — Sistema de Registro de
+Muestreo de Aves. Los datos corresponden al registro de campo realizado el \textbf{{{fecha}}}
+en \textbf{{{ubicacion}}}.
+
+\vspace{1cm}
+\noindent
+\begin{tabular}{p{6cm} p{6cm}}
+  \cline{1-1}\cline{2-2}\\
+  {{observador}} & {{autor}} \\
+  \textit{Observador de campo} & \textit{Investigador principal} \\
+\end{tabular}
+
+\end{document}

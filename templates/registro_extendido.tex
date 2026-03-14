@@ -1,0 +1,172 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[top=3cm,bottom=3cm,left=3.5cm,right=3cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\definecolor{darkgreen}{RGB}{28,61,44}
+\definecolor{midgreen}{RGB}{45,92,64}
+\definecolor{lightgreen}{RGB}{200,221,210}
+\definecolor{amber}{RGB}{200,120,10}
+\definecolor{parchment}{RGB}{246,241,232}
+
+\hypersetup{colorlinks=true,linkcolor=darkgreen,urlcolor=amber,
+  pdftitle={Registro de Campo Extendido — {{nombre_proyecto}}}}
+
+\titleformat{\section}{\large\bfseries\color{darkgreen}}{\thesection}{1em}{}[\color{lightgreen}\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\color{midgreen}}{\thesubsection}{1em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{midgreen}{Registro Extendido — {{nombre_proyecto}}}}
+\fancyhead[R]{\small\textcolor{midgreen}{{{fecha_raw}}}}
+\fancyfoot[L]{\small\textcolor{gray}{{{autor}} — {{institucion}}}}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+\begin{titlepage}
+  \pagecolor{darkgreen}\color{white}
+  \vspace*{1.5cm}
+  \begin{center}
+    {\small\textcolor{amber}{\textbf{\MakeUppercase{Registro de Campo Extendido}}}}\\[1.2cm]
+    {\fontsize{24}{30}\selectfont\bfseries {{nombre_proyecto}}}\\[0.6cm]
+    {\large\itshape Ficha Técnica de Muestreo de Avifauna}\\[0.4cm]
+    {\normalsize\textcolor{lightgreen}{Para publicación científica}}\\[2cm]
+    \textcolor{amber}{\rule{0.4\textwidth}{1pt}}\\[1.5cm]
+    \begin{tabular}{rl}
+      \textcolor{lightgreen}{Investigador:}  & {{autor}} \\[3pt]
+      \textcolor{lightgreen}{Institución:}   & {{institucion}} \\[3pt]
+      \textcolor{lightgreen}{Fecha:}         & {{fecha}} \\[3pt]
+      \textcolor{lightgreen}{Sitio:}         & {{ubicacion}} \\[3pt]
+      \textcolor{lightgreen}{Coordenadas:}   & {{coordenadas}} \\[3pt]
+      \textcolor{lightgreen}{Altitud:}       & {{altitud}} \\
+    \end{tabular}
+    \vfill
+    {\small\textcolor{lightgreen}{AveSampler — Sistema Profesional de Registro Ornitológico}}
+  \end{center}
+\end{titlepage}
+\nopagecolor
+
+\tableofcontents\newpage
+
+\section{Datos de Identificación}
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{5cm} p{9cm}}
+  \toprule
+  Nombre del proyecto  & {{nombre_proyecto}} \\
+  Autor principal      & {{autor}} \\
+  Institución          & {{institucion}} \\
+  Fecha del muestreo   & {{fecha}} \\
+  \bottomrule
+\end{tabular}
+
+\section{Área de Estudio}
+
+\subsection{Localización geográfica}
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{5cm} p{9cm}}
+  \toprule
+  Localidad           & {{ubicacion}} \\
+  Coordenadas WGS84   & {{coordenadas}} \\
+  Elevación           & {{altitud}} \\
+  Tipo de ecosistema  & {{ecosistema}} \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Condiciones ambientales durante el muestreo}
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{5cm} p{9cm}}
+  \toprule
+  Estado del cielo    & {{clima}} \\
+  Temperatura         & {{temperatura}} \\
+  \bottomrule
+\end{tabular}
+
+\section{Protocolo de Muestreo}
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{5cm} p{9cm}}
+  \toprule
+  Método empleado     & {{metodo}} \\
+  Duración efectiva   & {{duracion}} \\
+  Inicio del muestreo & {{hora_inicio}} \\
+  Fin del muestreo    & {{hora_fin}} \\
+  Observador(es)      & {{observador}} \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Contexto del muestreo}
+
+{{notas_generales}}
+
+\section{Resultados}
+
+\subsection{Resumen cuantitativo}
+
+\begin{tabular}{>{\bfseries\color{midgreen}}p{7cm} >{\centering\arraybackslash}p{5cm}}
+  \toprule
+  Riqueza de especies ($S$)           & {{total_especies}} \\
+  Abundancia total ($N$)              & {{total_individuos}} \\
+  Registros fotográficos              & {{total_fotos}} \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Lista sistemática de especies observadas}
+
+\rowcolors{2}{parchment}{white}
+\begin{longtable}{>{\itshape\bfseries}p{4.5cm} >{\centering\arraybackslash}p{1.2cm} p{2.8cm} p{2.5cm} p{3cm}}
+  \toprule
+  \rowcolor{lightgreen}
+  \normalfont\textbf{Especie} & \textbf{n} & \textbf{Comportamiento} & \textbf{Sexo/Edad} & \textbf{Comentarios} \\
+  \midrule
+  \endfirsthead
+  \multicolumn{5}{c}{\footnotesize (continuación)}\\
+  \toprule
+  \rowcolor{lightgreen}
+  \normalfont\textbf{Especie} & \textbf{n} & \textbf{Comportamiento} & \textbf{Sexo/Edad} & \textbf{Comentarios} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \multicolumn{5}{r}{\footnotesize Total: {{total_individuos}} individuos}
+  \endfoot
+  \hline
+{{tabla_especies}}
+\end{longtable}
+
+\section{Documentación Fotográfica}
+
+{{fotografias}}
+
+\section{Conclusiones y Recomendaciones}
+
+El presente muestreo fue realizado en \textbf{{{ubicacion}}} el día \textbf{{{fecha}}},
+empleando \textbf{{{metodo}}} durante \textbf{{{duracion}}} con condiciones climáticas
+de \textbf{{{clima}}}. Se registró un total de \textbf{{{total_especies}}} especies
+y \textbf{{{total_individuos}}} individuos.
+
+\vspace{1.5cm}
+\noindent
+\begin{tabular}{p{6cm} p{6cm}}
+  \cline{1-1}\cline{2-2}\\
+  {{observador}}              & {{autor}} \\
+  \textit{Observador de campo} & \textit{Investigador principal} \\
+  \textit{{{institucion}}}   & \textit{{{fecha}}} \\
+\end{tabular}
+
+\vspace{2cm}
+\noindent\textcolor{midgreen}{\rule{\textwidth}{0.3pt}}\\
+\footnotesize\textcolor{gray}{Generado con AveSampler — Sistema Profesional de Registro Ornitológico. {{fecha}}.}
+
+\end{document}
