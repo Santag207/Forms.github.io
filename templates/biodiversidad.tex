@@ -1,72 +1,127 @@
 \documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}\usepackage[T1]{fontenc}\usepackage[spanish]{babel}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
 \usepackage[top=2.5cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
-\usepackage{fancyhdr}\usepackage{parskip}\usepackage{graphicx}\usepackage{booktabs}
-\usepackage{longtable}\usepackage{array}\usepackage{colortbl}\usepackage{xcolor}
-\usepackage{hyperref}\usepackage{amsmath}
-\definecolor{darkgreen}{RGB}{28,61,44}\definecolor{midgreen}{RGB}{45,92,64}
-\definecolor{lightgreen}{RGB}{200,221,210}\definecolor{amber}{RGB}{200,120,10}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\definecolor{darkgreen}{RGB}{28,61,44}
+\definecolor{midgreen}{RGB}{45,92,64}
+\definecolor{lightgreen}{RGB}{200,221,210}
+\definecolor{amber}{RGB}{200,120,10}
 \definecolor{parchment}{RGB}{246,241,232}
+
 \hypersetup{colorlinks=true,linkcolor=darkgreen,urlcolor=amber,
   pdftitle={Monitoreo de Biodiversidad — {{nombre_proyecto}}}}
-\pagestyle{fancy}\fancyhf{}
+
+\pagestyle{fancy}
+\fancyhf{}
 \fancyhead[L]{\small\textcolor{midgreen}{\textbf{AveSampler — Biodiversidad}}}
-\fancyhead[R]{\small\textcolor{midgreen}{{{fecha_raw}}}}\fancyfoot[C]{\thepage}
+\fancyhead[R]{\small\textcolor{midgreen}{{{fecha_raw}}}}
+\fancyfoot[C]{\thepage}
+
 \begin{document}
+
+% ── Cover ──
 \begin{titlepage}
-  \pagecolor{darkgreen}\color{white}\vspace*{2cm}
+  \pagecolor{darkgreen}\color{white}
+  \vspace*{2cm}
   \begin{center}
     {\small\textcolor{lightgreen}{\textbf{\MakeUppercase{Monitoreo de Biodiversidad}}}}\\[1.5cm]
     {\fontsize{26}{32}\selectfont\bfseries {{nombre_proyecto}}}\\[0.8cm]
     {\large\itshape Registro Multiespecies — Avifauna}\\[2cm]
     \textcolor{lightgreen}{\rule{0.5\textwidth}{0.5pt}}\\[1.5cm]
     \begin{tabular}{rl}
-      \textcolor{lightgreen}{Fecha:}&{{fecha}}\\[3pt]
-      \textcolor{lightgreen}{Autor:}&{{autor}}\\[3pt]
-      \textcolor{lightgreen}{Ubicación:}&{{ubicacion}}\\[3pt]
-      \textcolor{lightgreen}{Ecosistema:}&{{ecosistema}}\\
+      \textcolor{lightgreen}{Fecha:}      & {{fecha}} \\[3pt]
+      \textcolor{lightgreen}{Autor:}       & {{autor}} \\[3pt]
+      \textcolor{lightgreen}{Ubicación:}   & {{ubicacion}} \\[3pt]
+      \textcolor{lightgreen}{Ecosistema:}  & {{ecosistema}} \\
     \end{tabular}
-    \vfill{\small\textcolor{lightgreen}{AveSampler — Sistema de Monitoreo de Biodiversidad}}
+    \vfill
+    {\small\textcolor{lightgreen}{AveSampler — Sistema de Monitoreo de Biodiversidad}}
   \end{center}
 \end{titlepage}
-\nopagecolor\tableofcontents\newpage
+\nopagecolor
+
+\tableofcontents\newpage
+
 \section{Contexto del Monitoreo}
+
 \begin{tabular}{>{\bfseries\color{midgreen}}p{4cm} p{10cm}}
   \toprule
-  Proyecto&{{nombre_proyecto}}\\Fecha&{{fecha}}\\Ecosistema&{{ecosistema}}\\
-  Coordenadas&{{coordenadas}}\\Altitud&{{altitud}}\\
+  Proyecto     & {{nombre_proyecto}} \\
+  Fecha        & {{fecha}} \\
+  Ecosistema   & {{ecosistema}} \\
+  Coordenadas  & {{coordenadas}} \\
+  Altitud      & {{altitud}} \\
   \bottomrule
 \end{tabular}
+
 \section{Condiciones Ambientales}
+
 \begin{tabular}{>{\bfseries\color{midgreen}}p{4cm} p{10cm}}
   \toprule
-  Clima&{{clima}}\\Temperatura&{{temperatura}}\\Método&{{metodo}}\\
-  Duración&{{duracion}}\\Inicio&{{hora_inicio}}\\Fin&{{hora_fin}}\\
+  Clima        & {{clima}} \\
+  Temperatura  & {{temperatura}} \\
+  Método       & {{metodo}} \\
+  Duración     & {{duracion}} \\
+  Inicio       & {{hora_inicio}} \\
+  Fin          & {{hora_fin}} \\
   \bottomrule
 \end{tabular}
+
 \section{Resultados del Monitoreo}
+
 \subsection{Métricas de diversidad}
+
 \begin{tabular}{>{\bfseries\color{midgreen}}p{6cm} >{\centering\arraybackslash}p{3cm}}
   \toprule
-  Riqueza específica ($S$)&{{total_especies}}\\
-  Abundancia total ($N$)&{{total_individuos}}\\
-  Fotografías de referencia&{{total_fotos}}\\
+  Riqueza específica ($S$)       & {{total_especies}} \\
+  Abundancia total ($N$)         & {{total_individuos}} \\
+  Fotografías de referencia      & {{total_fotos}} \\
   \bottomrule
 \end{tabular}
+
 \subsection{Listado de especies}
+
 \rowcolors{2}{parchment}{white}
 \begin{longtable}{>{\bfseries}p{4.5cm} p{1.5cm} p{3cm} p{2.5cm} p{3cm}}
   \toprule
-  \rowcolor{lightgreen}\textbf{Taxón}&\textbf{$n_i$}&\textbf{Actividad}&\textbf{Estadio}&\textbf{Observaciones}\\
-  \midrule\endfirsthead
-  \toprule\rowcolor{lightgreen}\textbf{Taxón}&\textbf{$n_i$}&\textbf{Actividad}&\textbf{Estadio}&\textbf{Observaciones}\\
-  \midrule\endhead\bottomrule\endfoot\hline
+  \rowcolor{lightgreen}
+  \textbf{Taxón} & \textbf{$n_i$} & \textbf{Actividad} & \textbf{Estadio} & \textbf{Observaciones} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \rowcolor{lightgreen}
+  \textbf{Taxón} & \textbf{$n_i$} & \textbf{Actividad} & \textbf{Estadio} & \textbf{Observaciones} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  \hline
 {{tabla_especies}}
 \end{longtable}
+
 \section{Evidencia Fotográfica}
+
 {{fotografias}}
+
 \section{Observaciones y Conclusiones}
+
 {{notas_generales}}
-\vspace{1.5cm}\noindent\textcolor{midgreen}{\rule{\textwidth}{0.5pt}}\\[0.5cm]
+
+\vspace{1.5cm}
+\noindent\textcolor{midgreen}{\rule{\textwidth}{0.5pt}}\\[0.5cm]
 \textit{Reporte generado por AveSampler — {{fecha}}}
+
 \end{document}
