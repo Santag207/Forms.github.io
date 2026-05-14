@@ -306,17 +306,22 @@ select.finput{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xml
 /* ══════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════ */
-@media(max-width:600px){
+@media(max-width:768px){
+  .frow.three{grid-template-columns:1fr 1fr}
+  .sum-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:480px){
   .home-main{padding:2rem 1.4rem 1.4rem}
   .home-title{font-size:2.1rem}
   .home-actions{max-width:100%}
   .fsec{padding:1.15rem .95rem 5.2rem}
   .frow{grid-template-columns:1fr}
-  .frow.three{grid-template-columns:1fr 1fr}
+  .frow.three{grid-template-columns:1fr}
   .photo-actions{flex-direction:column}
-  .sec-foot{padding:.7rem .95rem}
-  .sum-grid{grid-template-columns:1fr}
+  .sec-foot{padding:.7rem .95rem 1.4rem; padding-bottom: calc(0.8rem + env(safe-area-inset-bottom))}
   .steps-row{padding:.65rem .9rem}
   .sdot label{display:none}
-  .modal-box{padding:1.4rem}
+  .modal-box{padding:1.4rem; padding-bottom: calc(1.9rem + env(safe-area-inset-bottom))}
+  .app-nav{padding-top: calc(0.85rem + env(safe-area-inset-top))}
 }

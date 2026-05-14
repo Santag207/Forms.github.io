@@ -4,9 +4,20 @@ const CS  = 'avesampler-static-'  + VER;
 const CD  = 'avesampler-dynamic-' + VER;
 
 const getStatic = base => [
-  base, base+'index.html', base+'style.css', base+'app.js', base+'manifest.json',
-  base+'templates/aves_estandar.tex', base+'templates/biodiversidad.tex', base+'templates/registro_extendido.tex',
-  base+'data/aves.json', base+'icons/icon-192.png', base+'icons/icon-512.png',
+  base,
+  base+'index.html',
+  base+'style.css',
+  base+'app.js',
+  base+'manifest.json',
+  base+'templates/aves_estandar.tex',
+  base+'templates/biodiversidad.tex',
+  base+'templates/registro_extendido.tex',
+  base+'data/aves.json',
+  base+'icons/icon-192.png',
+  base+'icons/icon-512.png',
+  base+'lib/jspdf.umd.min.js',
+  base+'lib/jspdf.plugin.autotable.min.js',
+  base+'lib/jszip.min.js',
 ];
 
 self.addEventListener('install', e => {
