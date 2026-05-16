@@ -124,7 +124,7 @@ select.finput{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xml
 /* ══════════════════════════════════════════════
    SPECIES ENTRIES
    ══════════════════════════════════════════════ */
-.sp-entry{background:var(--parch);border:1.5px solid var(--parch2);border-radius:var(--r);padding:1rem;margin-bottom:.9rem}
+.species-entry{background:var(--parch);border:1.5px solid var(--parch2);border-radius:var(--r);padding:1rem;margin-bottom:.9rem}
 .sp-entry-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
 .sp-num{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--am);background:rgba(200,120,10,.1);padding:.22rem .6rem;border-radius:100px}
 .sp-remove{background:none;border:none;color:#c0392b;cursor:pointer;font-size:.8rem;opacity:.6;padding:.3rem .5rem;border-radius:var(--rs);transition:opacity var(--tr)}

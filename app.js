@@ -224,7 +224,7 @@ const App = {
     State.speciesData[n] = { fotos: [] };
 
     const list = document.createElement('div');
-    list.className = 'sp-entry';
+    list.className = 'species-entry';
     list.id = `species-${n}`;
     list.innerHTML = `
       <div class="sp-entry-head">
@@ -682,9 +682,10 @@ const App = {
 
     } catch(err) {
       console.error(err);
-      App.closeDownloadModal();
+      App.closeDLModal();
       App.toast('Error generando el reporte: ' + err.message, 'error');
-      document.getElementById('btn-generate').disabled = false;
+      const btn = document.getElementById('btn-gen');
+      if (btn) btn.disabled = false;
     }
   },
 
