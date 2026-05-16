@@ -17,20 +17,20 @@ const State = {
 };
 
 const SECTION_META = {
-  'section-template': { title: 'Plantilla',   step: 1 },
-  'section-sampling': { title: 'Sitio',       step: 2 },
-  'section-species':  { title: 'Especies',    step: 3 },
-  'section-photos':   { title: 'Fotos',       step: 4 },
-  'section-report':   { title: 'Reporte',     step: 5 },
+  'sec-template': { title: 'Plantilla',   step: 1 },
+  'sec-sampling': { title: 'Sitio',       step: 2 },
+  'sec-species':  { title: 'Especies',    step: 3 },
+  'sec-photos':   { title: 'Fotos',       step: 4 },
+  'sec-report':   { title: 'Reporte',     step: 5 },
 };
 const TOTAL_STEPS = 5;
 
 const SECTION_PREV = {
-  'section-template': 'screen-home',
-  'section-sampling': 'section-template',
-  'section-species':  'section-sampling',
-  'section-photos':   'section-species',
-  'section-report':   'section-photos',
+  'sec-template': 'screen-home',
+  'sec-sampling': 'sec-template',
+  'sec-species':  'sec-sampling',
+  'sec-photos':   'sec-species',
+  'sec-report':   'sec-photos',
 };
 
 // ═══════════════════════════════════════════════════
@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => { App.init(); });
 const App = {
 
   async init() {
-    document.getElementById('project-date').value = new Date().toISOString().split('T')[0];
+    const dateInput = document.getElementById('f-date');
+    if (dateInput) dateInput.value = new Date().toISOString().split('T')[0];
     App.addSpecies();
     App.loadRecords();
     App.updateOnlineStatus();
@@ -64,7 +65,8 @@ const App = {
     const isStandalone = navigator.standalone === true ||
                          window.matchMedia('(display-mode: standalone)').matches;
     if (isIOS && !isStandalone) {
-      document.getElementById('btn-install-ios').style.display = 'inline-flex';
+      const btnIos = document.getElementById('btn-ios');
+      if (btnIos) btnIos.style.display = 'inline-flex';
       if (!localStorage.getItem('ios_banner_dismissed')) {
         setTimeout(() => App.showIOSBanner(), 2800);
       }
@@ -150,7 +152,7 @@ const App = {
       State.currentSection = null;
     } else {
       document.getElementById('screen-app').classList.add('active');
-      document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.fsec').forEach(s => s.classList.remove('active'));
       const sec = document.getElementById(target);
       if (sec) sec.classList.add('active');
       State.currentSection = target;
@@ -164,22 +166,23 @@ const App = {
     App.goTo(dest);
   },
 
-  nextSection(target) {
+  next(target) {
     if (!App.validateSection(State.currentSection)) return;
-    if (target === 'section-report') App.buildReportSummary();
+    if (target === 'sec-report') App.buildReportSummary();
     App.saveDraft();
     App.goTo(target);
   },
 
-  prevSection(target) { App.goTo(target); },
+  prev(target) { App.goTo(target); },
 
   updateNavUI(sectionId) {
     const meta = SECTION_META[sectionId] || { title: '', step: 1 };
     document.getElementById('nav-title').textContent = meta.title;
     document.getElementById('nav-step').textContent  = `${meta.step} / ${TOTAL_STEPS}`;
-    document.getElementById('progress-bar').style.width = `${(meta.step / TOTAL_STEPS) * 100}%`;
-    document.querySelectorAll('.step-dot').forEach(dot => {
-      const s = parseInt(dot.dataset.step);
+    const progLine = document.getElementById('prog-line');
+    if (progLine) progLine.style.width = `${(meta.step / TOTAL_STEPS) * 100}%`;
+    document.querySelectorAll('.sdot').forEach(dot => {
+      const s = parseInt(dot.dataset.s);
       dot.classList.remove('active', 'done');
       if (s === meta.step) dot.classList.add('active');
       else if (s < meta.step) dot.classList.add('done');
@@ -189,14 +192,17 @@ const App = {
   // ── VALIDATION ─────────────────────────────────────
 
   validateSection(id) {
-    if (id === 'section-template') {
-      if (!document.getElementById('project-name').value.trim())
+    if (id === 'sec-template') {
+      const name = document.getElementById('f-name');
+      const date = document.getElementById('f-date');
+      if (!name || !name.value.trim())
         { App.toast('Ingresa el nombre del proyecto', 'error'); return false; }
-      if (!document.getElementById('project-date').value)
+      if (!date || !date.value)
         { App.toast('Selecciona la fecha del muestreo', 'error'); return false; }
     }
-    if (id === 'section-sampling') {
-      if (!document.getElementById('location').value.trim())
+    if (id === 'sec-sampling') {
+      const loc = document.getElementById('f-loc');
+      if (!loc || !loc.value.trim())
         { App.toast('Ingresa la ubicación del muestreo', 'error'); return false; }
     }
     return true;
@@ -204,10 +210,10 @@ const App = {
 
   // ── TEMPLATE SELECTION ─────────────────────────────
 
-  selectTemplate(card) {
-    document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    State.selectedTemplate = card.dataset.value;
+  pickTpl(card) {
+    document.querySelectorAll('.tpl-card').forEach(c => c.classList.remove('sel'));
+    card.classList.add('sel');
+    State.selectedTemplate = card.dataset.v;
   },
 
   // ── SPECIES ────────────────────────────────────────
@@ -221,23 +227,23 @@ const App = {
     list.className = 'species-entry';
     list.id = `species-${n}`;
     list.innerHTML = `
-      <div class="species-entry-header">
-        <span class="species-num">Especie #${n}</span>
-        <button class="species-remove" onclick="App.removeSpecies(${n})">✕ Eliminar</button>
+      <div class="sp-entry-head">
+        <span class="sp-num">Especie #${n}</span>
+        <button class="sp-remove" onclick="App.removeSpecies(${n})">✕ Eliminar</button>
       </div>
 
       <!-- Family + Species cascade -->
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label required" for="sp-family-${n}">Familia</label>
-          <select id="sp-family-${n}" class="form-input sp-family-select"
+      <div class="frow">
+        <div class="fgroup">
+          <label class="flabel req" for="sp-family-${n}">Familia</label>
+          <select id="sp-family-${n}" class="finput sp-family-select"
             onchange="App.onFamilyChange('sp-family-${n}','sp-species-${n}','sp-manual-${n}')">
             <option value="">— Seleccionar familia —</option>
           </select>
         </div>
-        <div class="form-group">
-          <label class="form-label required" for="sp-species-${n}">Especie</label>
-          <select id="sp-species-${n}" class="form-input"
+        <div class="fgroup">
+          <label class="flabel req" for="sp-species-${n}">Especie</label>
+          <select id="sp-species-${n}" class="finput"
             onchange="App.onSpeciesChange('sp-species-${n}','sp-manual-${n}')">
             <option value="">— Primero selecciona familia —</option>
           </select>
@@ -246,20 +252,20 @@ const App = {
 
       <!-- Manual entry fallback -->
       <div id="sp-manual-${n}" style="display:none">
-        <div class="form-group">
-          <label class="form-label" for="sp-name-${n}">Nombre científico / común (manual)</label>
-          <input type="text" id="sp-name-${n}" class="form-input" placeholder="Ej: Turdus fuscater / Mirla patiamarilla" />
+        <div class="fgroup">
+          <label class="flabel" for="sp-name-${n}">Nombre científico / común (manual)</label>
+          <input type="text" id="sp-name-${n}" class="finput" placeholder="Ej: Turdus fuscater / Mirla patiamarilla" />
         </div>
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="sp-count-${n}">Individuos</label>
-          <input type="number" id="sp-count-${n}" class="form-input" min="1" value="1" />
+      <div class="frow">
+        <div class="fgroup">
+          <label class="flabel" for="sp-count-${n}">Individuos</label>
+          <input type="number" id="sp-count-${n}" class="finput" min="1" value="1" />
         </div>
-        <div class="form-group">
-          <label class="form-label" for="sp-behavior-${n}">Comportamiento</label>
-          <select id="sp-behavior-${n}" class="form-input">
+        <div class="fgroup">
+          <label class="flabel" for="sp-behavior-${n}">Comportamiento</label>
+          <select id="sp-behavior-${n}" class="finput">
             <option value="">Seleccionar...</option>
             <option>Canto / Vocalización</option><option>Forrajeo / Alimentación</option>
             <option>Vuelo</option><option>Percha</option><option>Anidación / Cortejo</option>
@@ -267,40 +273,40 @@ const App = {
           </select>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="sp-sex-${n}">Sexo / Edad</label>
-          <select id="sp-sex-${n}" class="form-input">
+      <div class="frow">
+        <div class="fgroup">
+          <label class="flabel" for="sp-sex-${n}">Sexo / Edad</label>
+          <select id="sp-sex-${n}" class="finput">
             <option value="">No determinado</option>
             <option>Macho adulto</option><option>Hembra adulta</option>
             <option>Juvenil</option><option>Inmaduro</option><option>Grupo mixto</option>
           </select>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="sp-notes-${n}">Notas</label>
-          <input type="text" id="sp-notes-${n}" class="form-input" placeholder="Observaciones..." />
+        <div class="fgroup">
+          <label class="flabel" for="sp-notes-${n}">Notas</label>
+          <input type="text" id="sp-notes-${n}" class="finput" placeholder="Observaciones..." />
         </div>
       </div>
 
       <!-- Per-species photos -->
-      <div class="sp-photos-section">
-        <div class="sp-photos-header">
-          <span class="sp-photos-label">📷 Fotos de esta especie</span>
-          <div class="sp-photo-btns">
-            <label class="sp-photo-add-btn" for="sp-photo-file-${n}">
+      <div class="sp-photos">
+        <div class="sp-photo-head">
+          <span class="sp-photo-lbl">📷 Fotos de esta especie</span>
+          <div class="sp-photo-actions">
+            <label class="sp-photo-btn" for="sp-photo-file-${n}">
               <svg viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               Galería
               <input type="file" id="sp-photo-file-${n}" accept="image/jpeg,image/png,image/jpg" multiple hidden
-                onchange="App.handlePhotoUpload(event,'species',${n})" />
+                onchange="App.addPhotos(event,'species',${n})" />
             </label>
-            <button class="sp-photo-add-btn" onclick="App.openSpeciesCamera(${n})">
+            <button class="sp-photo-btn" onclick="App.openSpeciesCamera(${n})">
               <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="11" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 8a1 1 0 0 1 1-1h1l2-2h6l2 2h1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8z" stroke="currentColor" stroke-width="1.8"/></svg>
               Cámara
             </button>
           </div>
         </div>
         <div id="sp-photo-grid-${n}" class="sp-photo-grid">
-          <span class="sp-photo-empty">Sin fotos para esta especie</span>
+          <span class="sp-photo-none">Sin fotos para esta especie</span>
         </div>
       </div>
     `;
@@ -330,7 +336,7 @@ const App = {
                     document.body.appendChild(i);
                     return i;
                   })();
-    input.onchange = e => App.handlePhotoUpload(e, 'species', n);
+    input.onchange = e => App.addPhotos(e, 'species', n);
     input.value = '';
     input.click();
   },
@@ -380,7 +386,7 @@ const App = {
 
   // ── PHOTOS ─────────────────────────────────────────
 
-  handlePhotoUpload(event, context, speciesId) {
+  addPhotos(event, context, speciesId) {
     const files = Array.from(event.target.files);
     if (!files.length) return;
 
@@ -415,9 +421,9 @@ const App = {
   },
 
   renderPhotoGrid(context) {
-    const grid  = document.getElementById('photo-grid-general');
-    const empty = document.getElementById('photo-empty-general');
-    const count = document.getElementById('photo-count-general');
+    const grid  = document.getElementById('gen-photo-grid');
+    const empty = document.getElementById('gen-photo-empty');
+    const count = document.getElementById('gen-photo-count');
     if (!grid) return;
     grid.querySelectorAll('.photo-thumb').forEach(t => t.remove());
     const photos = State.generalPhotos;
@@ -470,12 +476,17 @@ const App = {
 
   openCaptionModal() {
     const modal = document.getElementById('caption-modal');
-    if (modal) { modal.style.display = 'flex'; document.getElementById('caption-input').value = ''; document.getElementById('caption-input').focus(); }
+    if (modal) {
+      modal.style.display = 'flex';
+      const input = document.getElementById('caption-input');
+      if (input) { input.value = ''; input.focus(); }
+    }
   },
 
   closeCaptionModal(event) {
     if (event && event.target !== event.currentTarget) return;
-    document.getElementById('caption-modal').style.display = 'none';
+    const modal = document.getElementById('caption-modal');
+    if (modal) modal.style.display = 'none';
     State.pendingCapture = null;
   },
 
@@ -502,9 +513,12 @@ const App = {
     App.toast('Obteniendo ubicación...');
     navigator.geolocation.getCurrentPosition(
       pos => {
-        document.getElementById('lat').value = pos.coords.latitude.toFixed(6);
-        document.getElementById('lon').value = pos.coords.longitude.toFixed(6);
-        if (pos.coords.altitude) document.getElementById('altitude').value = Math.round(pos.coords.altitude);
+        const lat = document.getElementById('f-lat');
+        const lon = document.getElementById('f-lon');
+        const alt = document.getElementById('f-alt');
+        if (lat) lat.value = pos.coords.latitude.toFixed(6);
+        if (lon) lon.value = pos.coords.longitude.toFixed(6);
+        if (alt && pos.coords.altitude) alt.value = Math.round(pos.coords.altitude);
         App.toast('📍 Coordenadas obtenidas', 'success');
       },
       () => App.toast('No se pudo obtener la ubicación', 'error'),
@@ -518,23 +532,23 @@ const App = {
     return {
       id:          Date.now().toString(),
       template:    State.selectedTemplate,
-      nombre_proyecto: (document.getElementById('project-name')?.value || '').trim(),
-      fecha:       document.getElementById('project-date')?.value || '',
-      autor:       (document.getElementById('project-author')?.value || '').trim(),
-      institucion: (document.getElementById('project-institution')?.value || '').trim(),
-      ubicacion:   (document.getElementById('location')?.value || '').trim(),
-      latitud:     document.getElementById('lat')?.value || '',
-      longitud:    document.getElementById('lon')?.value || '',
-      altitud:     document.getElementById('altitude')?.value || '',
-      ecosistema:  document.getElementById('ecosystem')?.value || '',
-      clima:       document.getElementById('weather')?.value || '',
-      temperatura: document.getElementById('temperature')?.value || '',
-      metodo:      document.getElementById('method')?.value || '',
-      duracion:    document.getElementById('duration')?.value || '',
-      hora_inicio: document.getElementById('time-start')?.value || '',
-      hora_fin:    document.getElementById('time-end')?.value || '',
-      observador:  (document.getElementById('observer')?.value || '').trim(),
-      notas_generales: (document.getElementById('sampling-notes')?.value || '').trim(),
+      nombre_proyecto: (document.getElementById('f-name')?.value || '').trim(),
+      fecha:       document.getElementById('f-date')?.value || '',
+      autor:       (document.getElementById('f-author')?.value || '').trim(),
+      institucion: (document.getElementById('f-inst')?.value || '').trim(),
+      ubicacion:   (document.getElementById('f-loc')?.value || '').trim(),
+      latitud:     document.getElementById('f-lat')?.value || '',
+      longitud:    document.getElementById('f-lon')?.value || '',
+      altitud:     document.getElementById('f-alt')?.value || '',
+      ecosistema:  document.getElementById('f-eco')?.value || '',
+      clima:       document.getElementById('f-wx')?.value || '',
+      temperatura: document.getElementById('f-temp')?.value || '',
+      metodo:      document.getElementById('f-method')?.value || '',
+      duracion:    document.getElementById('f-dur')?.value || '',
+      hora_inicio: document.getElementById('f-ts')?.value || '',
+      hora_fin:    document.getElementById('f-te')?.value || '',
+      observador:  (document.getElementById('f-obs')?.value || '').trim(),
+      notas_generales: (document.getElementById('f-notes')?.value || '').trim(),
       especies:    App.getSpeciesData(),
       fotos:       State.generalPhotos,
       created_at:  new Date().toISOString(),
@@ -565,15 +579,15 @@ const App = {
       </div>
     `;
     const base = `${(data.nombre_proyecto || 'Proyecto').replace(/\s+/g,'_')}_${data.fecha}`;
-    const pdfEl = document.getElementById('pdf-filename');
-    const zipEl = document.getElementById('zip-filename');
+    const pdfEl = document.getElementById('lbl-pdf');
+    const zipEl = document.getElementById('lbl-zip');
     if (pdfEl) pdfEl.textContent = `${base}.pdf`;
     if (zipEl) zipEl.textContent = `${base}.zip`;
   },
 
   // ── MAIN GENERATE ──────────────────────────────────
 
-  async generateReport() {
+  async generate() {
     const data = App.collectData();
     if (!data.nombre_proyecto || !data.fecha) {
       App.toast('Completa nombre del proyecto y fecha', 'error');
@@ -585,8 +599,10 @@ const App = {
     // Open download modal in progress state
     App.openDownloadModal();
     const setP = (pct, msg) => {
-      document.getElementById('dl-progress-fill').style.width = pct + '%';
-      document.getElementById('dl-progress-msg').textContent  = msg;
+      const fill = document.getElementById('dl-prog-fill');
+      const msgEl = document.getElementById('dl-prog-msg');
+      if (fill) fill.style.width = pct + '%';
+      if (msgEl) msgEl.textContent  = msg;
     };
 
     try {
@@ -666,13 +682,14 @@ const App = {
 
     } catch(err) {
       console.error(err);
-      App.closeDownloadModal();
+      App.closeDLModal();
       App.toast('Error generando el reporte: ' + err.message, 'error');
-      document.getElementById('btn-generate').disabled = false;
+      const btn = document.getElementById('btn-gen');
+      if (btn) btn.disabled = false;
     }
   },
 
-  downloadFile(type) {
+  dlFile(type) {
     if (!State.currentFiles) return;
     const { pdfBlob, zipBlob, base } = State.currentFiles;
     if (type === 'pdf') {
@@ -697,24 +714,33 @@ const App = {
   },
 
   openDownloadModal() {
-    document.getElementById('dl-phase-progress').style.display = 'block';
-    document.getElementById('dl-phase-done').style.display     = 'none';
-    document.getElementById('dl-progress-fill').style.width    = '0%';
-    document.getElementById('download-modal').style.display    = 'flex';
+    const phaseProg = document.getElementById('dl-progress-phase');
+    const phaseDone = document.getElementById('dl-done-phase');
+    const fill = document.getElementById('dl-prog-fill');
+    const modal = document.getElementById('dl-modal');
+    if (phaseProg) phaseProg.style.display = 'block';
+    if (phaseDone) phaseDone.style.display = 'none';
+    if (fill) fill.style.width = '0%';
+    if (modal) modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   },
 
   showDownloadDone(base) {
-    document.getElementById('dl-phase-progress').style.display = 'none';
-    document.getElementById('dl-phase-done').style.display     = 'block';
-    document.getElementById('dl-pdf-name').textContent = `${base}.pdf`;
-    document.getElementById('dl-zip-name').textContent = `${base}.zip`;
+    const phaseProg = document.getElementById('dl-progress-phase');
+    const phaseDone = document.getElementById('dl-done-phase');
+    if (phaseProg) phaseProg.style.display = 'none';
+    if (phaseDone) phaseDone.style.display = 'block';
+    const pdfName = document.getElementById('dl-pdf-name');
+    const zipName = document.getElementById('dl-zip-name');
+    if (pdfName) pdfName.textContent = `${base}.pdf`;
+    if (zipName) zipName.textContent = `${base}.zip`;
     // Auto-trigger PDF download immediately
-    setTimeout(() => App.downloadFile('pdf'), 300);
+    setTimeout(() => App.dlFile('pdf'), 300);
   },
 
-  closeDownloadModal() {
-    document.getElementById('download-modal').style.display = 'none';
+  closeDLModal() {
+    const modal = document.getElementById('dl-modal');
+    if (modal) modal.style.display = 'none';
     document.body.style.overflow = '';
   },
 
@@ -867,22 +893,24 @@ const App = {
     App.renderRecordsList();
   },
 
-  exportAllRecordsJSON() {
+  exportAllJSON() {
     if (!State.records.length) { App.toast('No hay registros guardados', 'error'); return; }
     const lightRecords = State.records.map(r => ({ ...r, data: undefined }));
     const blob = new Blob([JSON.stringify(lightRecords, null, 2)], { type: 'application/json' });
     App.triggerDownload(blob, `avesampler_historial_${new Date().toISOString().split('T')[0]}.json`);
   },
 
-  openRecordsPanel() {
+  openPanel() {
     App.renderRecordsList();
-    document.getElementById('records-overlay').style.display = 'block';
+    const overlay = document.getElementById('panel-overlay');
+    if (overlay) overlay.style.display = 'block';
     document.getElementById('records-panel').classList.add('open');
     document.body.style.overflow = 'hidden';
   },
 
-  closeRecordsPanel() {
-    document.getElementById('records-overlay').style.display = 'none';
+  closePanel() {
+    const overlay = document.getElementById('panel-overlay');
+    if (overlay) overlay.style.display = 'none';
     document.getElementById('records-panel').classList.remove('open');
     document.body.style.overflow = '';
   },
@@ -1308,7 +1336,7 @@ AveSampler © ${new Date().getFullYear()}
   // ── NEW RECORD ─────────────────────────────────────
 
   newRecord() {
-    App.closeDownloadModal();
+    App.closeDLModal();
 
     // Reset all state
     State.selectedTemplate = 'aves_estandar';
@@ -1319,20 +1347,21 @@ AveSampler © ${new Date().getFullYear()}
 
     // Reset all form fields
     const clear = (id, val='') => { const el=document.getElementById(id); if(el) el.value=val; };
-    clear('project-name'); clear('project-date', new Date().toISOString().split('T')[0]);
-    clear('project-author'); clear('project-institution');
-    clear('location'); clear('lat'); clear('lon'); clear('altitude');
-    clear('ecosystem'); clear('weather'); clear('temperature');
-    clear('method'); clear('duration'); clear('time-start'); clear('time-end');
-    clear('observer'); clear('sampling-notes');
+    clear('f-name'); clear('f-date', new Date().toISOString().split('T')[0]);
+    clear('f-author'); clear('f-inst');
+    clear('f-loc'); clear('f-lat'); clear('f-lon'); clear('f-alt');
+    clear('f-eco'); clear('f-wx'); clear('f-temp');
+    clear('f-method'); clear('f-dur'); clear('f-ts'); clear('f-te');
+    clear('f-obs'); clear('f-notes');
 
     // Reset template selection
-    document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
-    const defaultCard = document.querySelector('[data-value="aves_estandar"]');
-    if (defaultCard) defaultCard.classList.add('selected');
+    document.querySelectorAll('.tpl-card').forEach(c => c.classList.remove('sel'));
+    const defaultCard = document.querySelector('[data-v="aves_estandar"]');
+    if (defaultCard) defaultCard.classList.add('sel');
 
     // Clear species list
-    document.getElementById('species-list').innerHTML = '';
+    const spList = document.getElementById('species-list');
+    if (spList) spList.innerHTML = '';
 
     // Clear general photo grid
     App.renderPhotoGrid('general');
@@ -1341,10 +1370,10 @@ AveSampler © ${new Date().getFullYear()}
     App.addSpecies();
 
     // Reset generate button
-    const btn = document.getElementById('btn-generate');
+    const btn = document.getElementById('btn-gen');
     if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
 
-    App.goTo('section-template');
+    App.goTo('sec-template');
   },
 
   // ── RECORDS PANEL METHODS ──────────────────────────
@@ -1359,11 +1388,13 @@ AveSampler © ${new Date().getFullYear()}
   },
 
   showIOSBanner() {
-    document.getElementById('ios-install-banner').style.display = 'block';
+    const banner = document.getElementById('ios-banner');
+    if (banner) banner.style.display = 'block';
   },
 
   closeIOSBanner() {
-    document.getElementById('ios-install-banner').style.display = 'none';
+    const banner = document.getElementById('ios-banner');
+    if (banner) banner.style.display = 'none';
     try { localStorage.setItem('ios_banner_dismissed','1'); } catch(e) {}
   },
 
@@ -1375,13 +1406,15 @@ AveSampler © ${new Date().getFullYear()}
   // ── MODALS ─────────────────────────────────────────
 
   openInstructions() {
-    document.getElementById('modal-instructions').style.display = 'flex';
+    const modal = document.getElementById('modal-instructions');
+    if (modal) modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   },
 
   closeInstructions(event) {
-    if (event && event.target !== event.currentTarget) return;
-    document.getElementById('modal-instructions').style.display = 'none';
+    if (event && event.target !== event.currentTarget && !event.target.classList.contains('modal-x')) return;
+    const modal = document.getElementById('modal-instructions');
+    if (modal) modal.style.display = 'none';
     document.body.style.overflow = '';
   },
 
@@ -1391,23 +1424,23 @@ AveSampler © ${new Date().getFullYear()}
     try {
       const d = {
         template: State.selectedTemplate,
-        projectName: document.getElementById('project-name')?.value||'',
-        projectDate: document.getElementById('project-date')?.value||'',
-        author: document.getElementById('project-author')?.value||'',
-        institution: document.getElementById('project-institution')?.value||'',
-        location: document.getElementById('location')?.value||'',
-        lat: document.getElementById('lat')?.value||'',
-        lon: document.getElementById('lon')?.value||'',
-        altitude: document.getElementById('altitude')?.value||'',
-        ecosystem: document.getElementById('ecosystem')?.value||'',
-        weather: document.getElementById('weather')?.value||'',
-        temperature: document.getElementById('temperature')?.value||'',
-        method: document.getElementById('method')?.value||'',
-        duration: document.getElementById('duration')?.value||'',
-        timeStart: document.getElementById('time-start')?.value||'',
-        timeEnd: document.getElementById('time-end')?.value||'',
-        observer: document.getElementById('observer')?.value||'',
-        notes: document.getElementById('sampling-notes')?.value||'',
+        projectName: document.getElementById('f-name')?.value||'',
+        projectDate: document.getElementById('f-date')?.value||'',
+        author: document.getElementById('f-author')?.value||'',
+        institution: document.getElementById('f-inst')?.value||'',
+        location: document.getElementById('f-loc')?.value||'',
+        lat: document.getElementById('f-lat')?.value||'',
+        lon: document.getElementById('f-lon')?.value||'',
+        altitude: document.getElementById('f-alt')?.value||'',
+        ecosystem: document.getElementById('f-eco')?.value||'',
+        weather: document.getElementById('f-wx')?.value||'',
+        temperature: document.getElementById('f-temp')?.value||'',
+        method: document.getElementById('f-method')?.value||'',
+        duration: document.getElementById('f-dur')?.value||'',
+        timeStart: document.getElementById('f-ts')?.value||'',
+        timeEnd: document.getElementById('f-te')?.value||'',
+        observer: document.getElementById('f-obs')?.value||'',
+        notes: document.getElementById('f-notes')?.value||'',
       };
       localStorage.setItem('avesampler_draft', JSON.stringify(d));
     } catch(e) {}
@@ -1419,18 +1452,18 @@ AveSampler © ${new Date().getFullYear()}
       if (!raw) return;
       const d = JSON.parse(raw);
       const set = (id,val) => { if(val){const el=document.getElementById(id);if(el)el.value=val;} };
-      set('project-name',d.projectName); set('project-date',d.projectDate);
-      set('project-author',d.author); set('project-institution',d.institution);
-      set('location',d.location); set('lat',d.lat); set('lon',d.lon); set('altitude',d.altitude);
-      set('ecosystem',d.ecosystem); set('weather',d.weather); set('temperature',d.temperature);
-      set('method',d.method); set('duration',d.duration);
-      set('time-start',d.timeStart); set('time-end',d.timeEnd);
-      set('observer',d.observer); set('sampling-notes',d.notes);
+      set('f-name',d.projectName); set('f-date',d.projectDate);
+      set('f-author',d.author); set('f-inst',d.institution);
+      set('f-loc',d.location); set('f-lat',d.lat); set('f-lon',d.lon); set('f-alt',d.altitude);
+      set('f-eco',d.ecosystem); set('f-wx',d.weather); set('f-temp',d.temperature);
+      set('f-method',d.method); set('f-dur',d.duration);
+      set('f-ts',d.timeStart); set('f-te',d.timeEnd);
+      set('f-obs',d.observer); set('f-notes',d.notes);
       if (d.template) {
         State.selectedTemplate = d.template;
-        document.querySelectorAll('.template-card').forEach(c=>c.classList.remove('selected'));
-        const card = document.querySelector(`[data-value="${d.template}"]`);
-        if (card) card.classList.add('selected');
+        document.querySelectorAll('.tpl-card').forEach(c=>c.classList.remove('sel'));
+        const card = document.querySelector(`[data-v="${d.template}"]`);
+        if (card) card.classList.add('sel');
       }
     } catch(e) {}
   },

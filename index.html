@@ -34,7 +34,7 @@
       </div>
       <span class="logo-text">AveSampler</span>
     </div>
-    <button class="ham-btn" onclick="UI.openPanel()">
+    <button class="ham-btn" onclick="App.openPanel()">
       <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </header>
@@ -53,12 +53,12 @@
         <span>Nuevo registro</span>
         <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <button class="btn-outline" onclick="UI.openInstructions()">Ver instrucciones</button>
+      <button class="btn-outline" onclick="App.openInstructions()">Ver instrucciones</button>
       <button class="btn-outline" id="btn-install" style="display:none" onclick="App.installPWA()">
         <svg viewBox="0 0 20 20" fill="none" style="width:15px;height:15px"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Instalar app
       </button>
-      <button class="btn-outline" id="btn-ios" style="display:none" onclick="UI.showIOSBanner()">
+      <button class="btn-outline" id="btn-ios" style="display:none" onclick="App.showIOSBanner()">
         <svg viewBox="0 0 20 20" fill="none" style="width:15px;height:15px"><path d="M10 3v10M6 9l4 4 4-4M4 15h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Instalar en iPhone/iPad
       </button>
@@ -79,7 +79,7 @@
       <strong>Instalar AveSampler</strong>
       <span>Toca <b>Compartir</b> <span class="share-icon">⎙</span> → <b>"Agregar a inicio"</b></span>
     </div>
-    <button class="ios-banner-x" onclick="UI.closeIOSBanner()">✕</button>
+    <button class="ios-banner-x" onclick="App.closeIOSBanner()">✕</button>
   </div>
   <div class="ios-arrow">▼</div>
 </div>
@@ -87,9 +87,9 @@
 <!-- ╔══════════════════════════════════════╗
      ║  INSTRUCTIONS MODAL                  ║
      ╚══════════════════════════════════════╝ -->
-<div id="modal-instructions" class="overlay" onclick="UI.closeInstructions(event)">
+<div id="modal-instructions" class="overlay" onclick="App.closeInstructions(event)">
   <div class="modal-box">
-    <button class="modal-x" onclick="UI.closeInstructions()">✕</button>
+    <button class="modal-x" onclick="App.closeInstructions()">✕</button>
     <h2 class="modal-title">Cómo usar AveSampler</h2>
     <ol class="inst-list">
       <li><span class="inst-n">01</span><div><strong>Plantilla</strong><p>Elige el tipo de reporte, nombre del proyecto y fecha.</p></div></li>
@@ -101,18 +101,18 @@
     <div class="modal-note">
       <strong>Historial ☰:</strong> Todos los registros se guardan localmente. Re-descarga reportes anteriores desde el menú.
     </div>
-    <button class="btn-primary" style="width:100%;margin-top:1.25rem" onclick="UI.closeInstructions();App.newRecord()"><span>Comenzar ahora</span></button>
+    <button class="btn-primary" style="width:100%;margin-top:1.25rem" onclick="App.closeInstructions();App.newRecord()"><span>Comenzar ahora</span></button>
   </div>
 </div>
 
 <!-- ╔══════════════════════════════════════╗
      ║  RECORDS PANEL (hamburger)           ║
      ╚══════════════════════════════════════╝ -->
-<div id="panel-overlay" class="panel-overlay" style="display:none" onclick="UI.closePanel()"></div>
+<div id="panel-overlay" class="panel-overlay" style="display:none" onclick="App.closePanel()"></div>
 <aside id="records-panel" class="records-panel">
   <div class="panel-head">
     <h2>Historial</h2>
-    <button class="modal-x white-x" onclick="UI.closePanel()">✕</button>
+    <button class="modal-x white-x" onclick="App.closePanel()">✕</button>
   </div>
   <div id="records-list" class="records-list">
     <div id="records-empty" class="records-empty">
@@ -166,7 +166,7 @@
       </div>
       <div class="dl-done-actions">
         <button class="btn-primary" onclick="App.newRecord()"><span>Nuevo registro</span></button>
-        <button class="btn-secondary" onclick="UI.closeDLModal()">Cerrar</button>
+        <button class="btn-secondary" onclick="App.closeDLModal()">Cerrar</button>
       </div>
     </div>
   </div>
@@ -184,7 +184,7 @@
     <span id="nav-title" class="nav-title">Plantilla</span>
     <div style="display:flex;align-items:center;gap:.4rem">
       <span id="nav-step" class="nav-step">1/5</span>
-      <button class="ham-btn ham-dark" onclick="UI.openPanel()">
+      <button class="ham-btn ham-dark" onclick="App.openPanel()">
         <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -384,9 +384,9 @@
 
 <div id="toast" class="toast" style="display:none"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="lib/jspdf.umd.min.js"></script>
+<script src="lib/jspdf.plugin.autotable.min.js"></script>
+<script src="lib/jszip.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

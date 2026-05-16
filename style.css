@@ -124,7 +124,7 @@ select.finput{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xml
 /* ══════════════════════════════════════════════
    SPECIES ENTRIES
    ══════════════════════════════════════════════ */
-.sp-entry{background:var(--parch);border:1.5px solid var(--parch2);border-radius:var(--r);padding:1rem;margin-bottom:.9rem}
+.species-entry{background:var(--parch);border:1.5px solid var(--parch2);border-radius:var(--r);padding:1rem;margin-bottom:.9rem}
 .sp-entry-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
 .sp-num{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--am);background:rgba(200,120,10,.1);padding:.22rem .6rem;border-radius:100px}
 .sp-remove{background:none;border:none;color:#c0392b;cursor:pointer;font-size:.8rem;opacity:.6;padding:.3rem .5rem;border-radius:var(--rs);transition:opacity var(--tr)}
@@ -306,17 +306,22 @@ select.finput{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xml
 /* ══════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════ */
-@media(max-width:600px){
+@media(max-width:768px){
+  .frow.three{grid-template-columns:1fr 1fr}
+  .sum-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:480px){
   .home-main{padding:2rem 1.4rem 1.4rem}
   .home-title{font-size:2.1rem}
   .home-actions{max-width:100%}
   .fsec{padding:1.15rem .95rem 5.2rem}
   .frow{grid-template-columns:1fr}
-  .frow.three{grid-template-columns:1fr 1fr}
+  .frow.three{grid-template-columns:1fr}
   .photo-actions{flex-direction:column}
-  .sec-foot{padding:.7rem .95rem}
-  .sum-grid{grid-template-columns:1fr}
+  .sec-foot{padding:.7rem .95rem 1.4rem; padding-bottom: calc(0.8rem + env(safe-area-inset-bottom))}
   .steps-row{padding:.65rem .9rem}
   .sdot label{display:none}
-  .modal-box{padding:1.4rem}
+  .modal-box{padding:1.4rem; padding-bottom: calc(1.9rem + env(safe-area-inset-bottom))}
+  .app-nav{padding-top: calc(0.85rem + env(safe-area-inset-top))}
 }
